@@ -1,0 +1,34 @@
+{
+  "name": "frontendcap",
+  "version": "1.0.0",
+  "description": "Datr",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EliOJackson/Front-End-Capstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EliOJackson/Front-End-Capstone/issues"
+  },
+  "homepage": "https://github.com/EliOJackson/Front-End-Capstone#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "matchdep": "^2.0.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-route": "^1.6.8",
+    "bulma": "^0.6.2",
+    "firebase": "^4.9.0",
+    "jquery": "^3.3.1"
+  }
+}

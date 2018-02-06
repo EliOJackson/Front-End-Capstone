@@ -5,23 +5,23 @@ angular.module("Datr", ["ngRoute"])
     .config(($routeProvider) => {
         $routeProvider
         .when("/dates", {
-            templateUrl: "DateList.html",
-            controller: "DatelistCtrl"
+            templateUrl: "partials/DateList.html",
+            controller: "DateListCtrl"
         })
         .when("/add", {
-            templateUrl: "AddDate.html",
+            templateUrl: "partials/AddDate.html",
             controller: "AddDateCtrl"
         })
         .when("/dates/:dateId", {
-            templateUrl: "DateInfo.html",
+            templateUrl: "partials/DateInfo.html",
             controller: "DateInfoCtrl"
         })
         .when("/user/:userId", {
-            templateUrl: "UserDates.html",
+            templateUrl: "partials/UserDates.html",
             controller: "UserDatesCtrl"
         })
         .otherwise("/", {
-            templateUrl: "DateList.html",
+            templateUrl: "partials/DateList.html",
             controller: "DatelistCtrl"
         });
     })    
