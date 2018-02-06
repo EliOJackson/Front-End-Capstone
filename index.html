@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel='stylesheet' type='text/css' href='node_modules/bulma/css/bulma.css'>
+   <link rel="stylesheet" type="text/css" href="css/main.css">
+   <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+   <title>Datr</title>
+</head>
+
+<body ng-app="Datr">
+
+    <div ng-include=" 'partials/Navbar.html'"></div>
+    <div id="mainContent">
+      <div ng-view></div>
+    </div>
+    <div ng-include=" 'partials/Footer.html'"></div>
+
+   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+   <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+   <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+   <script src="node_modules/firebase/firebase.js"></script>
+   <!-- app scripts -->
+   <script type="text/javascript" src="app/app.js"></script>
+   <script type="text/javascript" src="app/values/fb-creds.js"></script>
+   <!-- factories -->
+   
+   <!-- controllers -->
+   
+</body>
+</html>
