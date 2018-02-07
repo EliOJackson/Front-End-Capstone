@@ -24,4 +24,6 @@ function getDateComments(uid, dateKey) {
 
     //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
 }
+
+    return { getAllDates, addDate, getSavedDates, getDateRating, getDateComments};
 });   

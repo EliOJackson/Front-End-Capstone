@@ -1,4 +1,20 @@
-<a class="link is-info nav-link" href="#!/dates">Dates</a>
-<a class="link is-info nav-link" href="#!/add">Add Dates</a>
-<a class="link is-info nav-link" href="#!/dates/1">DateId 1</a>
-<a class="link is-info nav-link" href="#!/user/1">Userinfo</a>
+<nav class="level" ng-controller="NavCtrl">
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" href="#!/dates">Dates</a>
+    </div>
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" href="#!/add">Add Dates</a>
+    </div>
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" href="#!/dates/1">DateId 1</a>
+    </div>
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" href="#!/user/1">Userinfo</a>
+    </div>
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" ng-click="login()">Login</a>
+    </div>
+    <div class="navLinkBox">
+        <a class="link is-info nav-link" ng-click="logout()">Logout</a>
+    </div>
+</nav>
