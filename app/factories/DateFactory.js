@@ -3,8 +3,20 @@
 angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
 
 function getAllDates() {
-    // returns a promise for all Dates from the Dates collection in firebase
+    return $q((resolve, reject) => {
+        $http.get(`${FBUrl}/dates.json`)
+            .then(({ data }) => {
+                Object.keys(data).map(dateKey => {
+                    data[dateKey].id = dateKey;
+                    return (data[dateKey]);
+                    // console.log('data[dateKey]',data[dateKey]);
+                });
+                console.log('Object.values(data)',Object.values(data));
+        });
+    });
 }
+    // returns a promise for all Dates from the Dates collection in firebase
+
 
 function addDate(item, location) {
         // return a promise to post a date to the Date colletion in firebase
