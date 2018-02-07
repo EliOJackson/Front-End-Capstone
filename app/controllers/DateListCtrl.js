@@ -5,7 +5,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory)
 
     DateFactory.getAllDates()
     .then(data => {
-        console.log("test",data);
+        $scope.dates = data;
         //run get all dates from Date Factory and print to partial.
     });
 

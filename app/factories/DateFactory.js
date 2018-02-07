@@ -11,7 +11,7 @@ function getAllDates() {
                     return (data[dateKey]);
                     // console.log('data[dateKey]',data[dateKey]);
                 });
-                console.log('Object.values(data)',Object.values(data));
+                resolve (Object.values(data));
         });
     });
 }
