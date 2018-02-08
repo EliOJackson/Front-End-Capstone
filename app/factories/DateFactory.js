@@ -7,9 +7,8 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
             $http.get(`${FBUrl}/dates.json`)
                 .then(({ data }) => {
                     Object.keys(data).map(dateKey => {
-                        data[dateKey].id = dateKey;
+                        data[dateKey].dateId = dateKey;
                         return (data[dateKey]);
-                        // console.log('data[dateKey]',data[dateKey]);
                     });
                     resolve(Object.values(data));
                 });
@@ -31,7 +30,6 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
                 .then(({ data }) => {
                     for (let saved in data) {
                         dateArray.push(data[saved]);
-                        console.log('dateArray', dateArray);
                     }
                     resolve(dateArray);
                 });
@@ -39,9 +37,15 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         });
     }
 
-    function getDateRating(dateKey) {
-        //internal function to be called in get all dates, that gets the date rating.
-        //Do I need to pass UID in here as well??? Maybe if its saved dates.
+    function getDateRating(dateId) {
+        return $q((resolve, reject) => {
+            $http
+                .get(`${FBUrl}rating.json?orderBy="dateId"&equalTo="${dateId}"`)
+                .then(( {data }) => {
+                    console.log(data, "rates please");
+                });
+        });
+        
     }
 
     function getDateComments(uid, dateKey) {
