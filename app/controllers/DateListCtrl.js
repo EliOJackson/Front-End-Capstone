@@ -6,15 +6,24 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory)
     DateFactory.getAllDates()
     .then(data => {
         $scope.dates = data;
+        let promiseArray = [];
+        console.log('$scope.dates',$scope.dates);
+        // let dateIdArray = [];
         $scope.dates.forEach(date => {
-            console.log(date.dateId, "dates");
-        })
-        // let dateId = data.dateId;
-        // console.log('dateId',dateId);
+            let dateId = date.dateId;
+            console.log('date.',dateId);
+            let ratings = DateFactory.getDateRating(dateId);
+            promiseArray.push(ratings);
+
+            });
+            console.log('promiseArray',promiseArray);
         // $scope.dates.forEach(date => {
-        //     DateFactory.getDateRating((dateId) => {
+        //     for (let i = 0; i < $scopes.dates.length; i++) {
+
+        //     }
+            // console.log(dateIdArray, "dates");
         //         console.log(data, "other try");
-        //     });
+            // });
 
         // });
         
