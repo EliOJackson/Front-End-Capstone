@@ -41,11 +41,11 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         return $q((resolve, reject) => {
             $http
                 .get(`${FBUrl}rating.json?orderBy="dateId"&equalTo="${dateId}"`)
-                .then(( {data }) => {
-                    console.log(data, "rates please");
+                .then(({ data }) => {
+                    resolve(data);
                 });
         });
-        
+
     }
 
     function getDateComments(uid, dateKey) {

@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory) {
+angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q) {
     $scope.title = "Date List";
 
     DateFactory.getAllDates()
@@ -11,21 +11,30 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory)
         // let dateIdArray = [];
         $scope.dates.forEach(date => {
             let dateId = date.dateId;
-            console.log('date.',dateId);
             let ratings = DateFactory.getDateRating(dateId);
             promiseArray.push(ratings);
 
             });
             console.log('promiseArray',promiseArray);
-        // $scope.dates.forEach(date => {
-        //     for (let i = 0; i < $scopes.dates.length; i++) {
+            return $q.all(promiseArray)
+            .then( (dates) => {
+                dates.forEach(date => {
+                    if (Object.keys(date).length > 0) {
+                        console.log(date, "date with rating");
+                        let ratingKeys = Object.keys(date);
+                        console.log('ratingKeys',ratingKeys);
+                        ratingKeys.forEach(ratingKey => {
+                            console.log('date[ratingKey].rating',date[ratingKey].rating);
+                        });
+                        
 
-        //     }
-            // console.log(dateIdArray, "dates");
-        //         console.log(data, "other try");
-            // });
+                    }
 
-        // });
+                });
+
+                
+            });
+        
         
         //run get all dates from Date Factory and print to partial.
         // call next promise, comments promise
