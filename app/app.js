@@ -16,7 +16,7 @@ angular.module("Datr", ["ngRoute"])
             templateUrl: "partials/DateInfo.html",
             controller: "DateInfoCtrl"
         })
-        .when("/user/:userId", {
+        .when("/user/:uid", {
             templateUrl: "partials/UserDates.html",
             controller: "UserDatesCtrl"
         })

@@ -1,11 +1,11 @@
 "use strict";
 
-angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory) {
+angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams) {
     $scope.title = "User's Dates";
 
  
-    // DateFactory.getSavedDates()//uid)
-    //     .then(data => {
-    //         //get UID and loop over saved dates in FB to pull the
-    //     });
+    DateFactory.getSavedDates($routeParams.uid)
+        .then(data => {
+            $scope.dates = data;
+        });
 });
