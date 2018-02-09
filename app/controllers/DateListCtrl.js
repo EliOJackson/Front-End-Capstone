@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, _) {
+angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, lodash) {
     $scope.title = "Date List";
 
     DateFactory.getAllDates()
@@ -27,22 +27,28 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                         let ratingTotal = 0;
                         ratingKeys.forEach(ratingKey => {
                             console.log('date[ratingKey].rating',date[ratingKey].rating);
-                              ratingArray.push(date[ratingKey].rating);
-                              console.log(_.mean(ratingArray), "average");
-                            //    ratingArray.push(
-                            //            {
-                            //                    dateId: date[ratingKey].dateId,
-                            //                    rating: date[ratingKey].rating
-                            //                }
-                            //            );
-                        });
+                              ratingArray.push(parseInt(date[ratingKey].rating));
+                              //   console.log(lodash.mean(ratingArray), "average");
+                              //    ratingArray.push(
+                                  //            {
+                                      //                    dateId: date[ratingKey].dateId,
+                                      //                    rating: date[ratingKey].rating
+                                      //                }
+                                      //            );
+                                    });
+                        average(ratingArray);
                         console.log(ratingArray, "ratingArray");
                                 console.log('ratingTotal',ratingTotal);
                     }
                 });
                 
             });
-        
+        function average (array) {
+            let sum = array.reduce((b, a) => a += b);
+            let avg = (sum / array.length).toFixed(2);
+            console.log(avg, "avg");
+            return avg;
+        }
         
         //run get all dates from Date Factory and print to partial.
         // call next promise, comments promise
