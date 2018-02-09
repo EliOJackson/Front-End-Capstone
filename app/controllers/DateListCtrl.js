@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q) {
+angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, _) {
     $scope.title = "Date List";
 
     DateFactory.getAllDates()
@@ -19,19 +19,27 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             return $q.all(promiseArray)
             .then( (dates) => {
                 dates.forEach(date => {
+                    let ratingArray = [];
                     if (Object.keys(date).length > 0) {
                         console.log(date, "date with rating");
                         let ratingKeys = Object.keys(date);
                         console.log('ratingKeys',ratingKeys);
+                        let ratingTotal = 0;
                         ratingKeys.forEach(ratingKey => {
                             console.log('date[ratingKey].rating',date[ratingKey].rating);
+                              ratingArray.push(date[ratingKey].rating);
+                              console.log(_.mean(ratingArray), "average");
+                            //    ratingArray.push(
+                            //            {
+                            //                    dateId: date[ratingKey].dateId,
+                            //                    rating: date[ratingKey].rating
+                            //                }
+                            //            );
                         });
-                        
-
+                        console.log(ratingArray, "ratingArray");
+                                console.log('ratingTotal',ratingTotal);
                     }
-
                 });
-
                 
             });
         
