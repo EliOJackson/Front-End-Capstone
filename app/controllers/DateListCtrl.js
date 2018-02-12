@@ -2,6 +2,7 @@
 
 angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, lodash) {
     $scope.title = "Date List";
+    $scope.saved = {};
 
     DateFactory.getAllDates()
         .then(data => {
@@ -49,7 +50,11 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         });
 
     $scope.saveDate = function () {
-        console.log("saved clicked");
+        $scope.saved.dateId = this.date.dateId;
+        $scope.saved.uid = firebase.auth().currentUser.uid;
+        DateFactory.save($scope.saved);
+        console.log('this.date.dateId',this.date.dateId);
+        console.log('firebase.auth().currentUser.uid',firebase.auth().currentUser.uid);
     };
 
 

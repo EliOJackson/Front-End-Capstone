@@ -16,11 +16,11 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
     }
     // returns a promise for all Dates from the Dates collection in firebase
 
-    function post(item) {
+    function save(date) {
         // return a promise to post an saved date to the SAVED colletion in firebase
         return $q((resolve, reject) => {
             $http
-                .post(`${FBUrl}/saved.json`, JSON.stringify(item))
+                .post(`${FBUrl}/saved.json`, JSON.stringify(date))
                 .then(data => {
                     console.log("New Image posted");
                     resolve(data);
@@ -69,5 +69,5 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
     }
 
-    return { getAllDates, addDate, getSavedDates, getDateRating, getDateComments };
+    return { getAllDates, addDate, getSavedDates, getDateRating, getDateComments, save };
 });   
