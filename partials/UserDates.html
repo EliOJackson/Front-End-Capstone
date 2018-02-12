@@ -3,10 +3,10 @@ This is my {{title}} page!
 <div class="imgWrap">
     <div id="columns">
         <div class="box imgBox" ng-repeat="date in dates | filter: search.term">
-            <h3 class="title">{{date.name}}</h3>
-            <h4>{{date.description}}</h3>
+            <h3 class="title">{{date.data.name}}</h3>
+            <h4>{{date.data.description}}</h3>
                 <div>
-                    <img ng-src="{{date.url}}" alt="" />
+                    <img ng-src="{{date.data.url}}" alt="" />
                 </div>
         </div>
     </div>

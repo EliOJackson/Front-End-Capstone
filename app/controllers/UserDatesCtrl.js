@@ -2,7 +2,7 @@
 
 angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q) {
     $scope.title = "User's Dates";
-    // $scope.dates = [];
+    $scope.dates = [];
  
     DateFactory.getSavedDates($routeParams.uid)
         .then(data => {
@@ -16,7 +16,7 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
             });
             return $q.all(promiseArray)
                 .then((dates) => {
-                    console.log("who knows", dates);
+                    $scope.dates = dates;
                 });
         });
 });

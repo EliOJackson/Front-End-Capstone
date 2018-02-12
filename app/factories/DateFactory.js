@@ -66,7 +66,7 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
     function datesToPrint(dateId) {
         return $q((resolve, reject) => {
             $http
-                .get(`${FBUrl}dates${dateId}.json`)
+                .get(`${FBUrl}dates/${dateId}.json`)
                 .then(data => {
                     console.log(data, "dates to print");
                     resolve(data);
