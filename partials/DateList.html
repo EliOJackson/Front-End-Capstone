@@ -5,9 +5,11 @@ This is my {{title}} page!
         <div class="box imgBox" ng-repeat="date in dates | filter: search.term">
             <h3 class="title">{{date.name}}</h3>
                 <h4>{{date.description}}</h3>
+                    <h5>{{date.rating}} </h5>
             <div>
                 <img ng-src="{{date.url}}" alt="" />
             </div>
+            <button class ="button" ng-click ="saveDate()">Save it!</button>
         </div>
     </div>
 </div>

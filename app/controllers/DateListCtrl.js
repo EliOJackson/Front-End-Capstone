@@ -6,70 +6,51 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
     DateFactory.getAllDates()
         .then(data => {
             $scope.dates = data;
-            let promiseArray = [];
-            console.log('$scope.dates', $scope.dates);
-            // let dateIdArray = [];
+            let promiseArray = []; // setting a promise array to push all of my calls to FB for Ratings
             $scope.dates.forEach(date => {
                 let dateId = date.dateId;
                 let ratings = DateFactory.getDateRating(dateId);
-                promiseArray.push(ratings);
+                promiseArray.push(ratings); //pushing all of the dates from get date rating in to the array
 
             });
-            console.log('promiseArray', promiseArray);
-            return $q.all(promiseArray)
+            return $q.all(promiseArray) // promise all on the array of the rating promises
                 .then((dates) => {
                     dates.forEach(date => {
                         let ratingArray = [];
-                        if (Object.keys(date).length > 0) {
-                            console.log(date, "date with rating");
+                        if (Object.keys(date).length > 0) { // if to filter out any objects returned without ratings
                             let ratingKeys = Object.keys(date);
-                            console.log('ratingKeys', ratingKeys);
-                            let ratingTotal = 0;
                             ratingKeys.forEach(ratingKey => {
-                                console.log('date[ratingKey].rating', date[ratingKey].rating);
                                 ratingArray.push(parseInt(date[ratingKey].rating));
                             });
-                            let ratingAverage= average(ratingArray);
-                            dateLoop(ratingAverage, date);
-                            // date.rating = ratingAverage;
-                            console.log(ratingArray, "ratingArray");
-                            console.log('ratingTotal', ratingTotal);
-                            console.log("dateid", date);
-                            console.log('$scope.dates BIG MONEY',$scope.dates);
-
+                            let ratingAverage = average(ratingArray); // averages each array of dates using the function below
+                            dateLoop(ratingAverage, date); //loops through the averaged ratings and adds them as a key on to their date
                         }
                     });
                 });
 
-            //internal function
+            //internal function called on line 25
             function average(array) {
                 let sum = array.reduce((b, a) => a += b);
                 let avg = (sum / array.length).toFixed(2);
-                console.log(avg, "avg");
                 return avg;
             }
-
-            function dateLoop (rating, dates) {
+            //internal function called on line 26
+            function dateLoop(rating, dates) {
                 let datesArrays = Object.entries(dates);
                 datesArrays.forEach(dateArray => {
-                    let dateId= dateArray[1].dateId;
-                    console.log (dateId, "dateId maybe");
+                    let dateId = dateArray[1].dateId;
                     for (let i = 0; i < $scope.dates.length; i++) {
-                        if(dateId === $scope.dates[i].dateId) {
-                            console.log("yahtzee", rating);
+                        if (dateId === $scope.dates[i].dateId) {
                             $scope.dates[i].rating = rating;
                         }
-                        
                     }
                 });
             }
-
-            //run get all dates from Date Factory and print to partial.
-            // call next promise, comments promise
-            // return factory.nextfunction
-            //.then 
-
         });
+
+    $scope.saveDate = function () {
+        console.log("saved clicked");
+    };
 
 
     // function getAllPreferredEvents() {
