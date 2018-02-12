@@ -39,15 +39,11 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
     }
 
     function getSavedDates(uid) {
-        let dateArray = [];
         return $q((resolve, reject) => {
             $http
                 .get(`${FBUrl}saved.json?orderBy="uid"&equalTo="${uid}"`)
                 .then(({ data }) => {
-                    for (let saved in data) {
-                        dateArray.push(data[saved]);
-                    }
-                    resolve(dateArray);
+                    resolve(data);
                 });
 
         });
@@ -59,6 +55,24 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
                 .get(`${FBUrl}rating.json?orderBy="dateId"&equalTo="${dateId}"`)
                 .then(({ data }) => {
                     resolve(data);
+                })
+                .catch(error => {
+                    console.log("getDate rating", error);
+                });
+        });
+
+    }
+
+    function datesToPrint(dateId) {
+        return $q((resolve, reject) => {
+            $http
+                .get(`${FBUrl}dates${dateId}.json`)
+                .then(data => {
+                    console.log(data, "dates to print");
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.log("dates to print error", error);
                 });
         });
 
@@ -69,5 +83,5 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
     }
 
-    return { getAllDates, addDate, getSavedDates, getDateRating, getDateComments, save };
+    return { getAllDates, addDate, getSavedDates, getDateRating, getDateComments, save, datesToPrint };
 });   
