@@ -3,6 +3,7 @@
 angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
 
     function rateDates(dates) {
+        console.log('dates',dates);
         return $q((resolve, reject) => {
             let allDates = dates;
             let promiseArray = []; // setting a promise array to push all of my calls to FB for Ratings
