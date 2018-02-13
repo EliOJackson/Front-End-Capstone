@@ -1,41 +1,45 @@
 This is my {{title}} page!
 
-<div class="imgWrap">
-    <div id="columns">
-        <div class="box imgBox" ng-repeat="date in dates | filter: search.term">
-            <h3 class="title">{{date.name}}</h3>
-            <h4>{{date.description}}</h3>
-                <h5>{{date.rating}} </h5>
-                <div>
-                    <img ng-src="{{date.url}}" alt="" />
-                </div>
-                <div class="buttons has-addons">
-                        <button class="button" ng-click="saveDate()">Save it!</button>
-                        <a class="button is-small is-right" ng-click="rateOne()">
-                            <span class="icon is-small">
-                                1
-                            </span>
+
+<div class="columns is-multiline tile is-parent">
+    <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
+        <!-- <div class="tile is-parent"> -->
+            <article class="tile is-child">
+                 <h3 class="title">{{date.name}}</h3>
+                    <h4>{{date.description}}</h4>
+                        <h5>{{date.rating}} </h5>
+                        <a class="image is-4b3" href="#!/dates/{{date.dateId}}">
+                            <img ng-src="{{date.url}}" alt="" />
                         </a>
-                        <a class="button is-small is-right" ng-click="rateTwo()">
-                            <span class="icon is-small">
-                                2
-                            </span>
-                        </a>
-                        <a class="button is-small is-right" ng-click="rateThree()">
-                            <span class="icon is-small">
-                                3
-                            </span>
-                        </a>
-                        <a class="button is-small is-right" ng-click="rateFour()">
-                            <span class="icon is-small">
-                                4
-                            </span>
-                        </a>
-                        <a class="button is-small is-right" ng-click="rateFive()">
-                            <span class="icon is-small ">
-                                5
-                            </span>
-                        </a>
-                </div>
-        </div>
+                        <div class="buttons has-addons">
+                            <button class="button" ng-click="saveDate()">Save it!</button>
+                            <a class="button is-small is-right" ng-click="rateOne()">
+                                <span class="icon is-small">
+                                    1
+                                </span>
+                            </a>
+                            <a class="button is-small is-right" ng-click="rateTwo()">
+                                <span class="icon is-small">
+                                    2
+                                </span>
+                            </a>
+                            <a class="button is-small is-right" ng-click="rateThree()">
+                                <span class="icon is-small">
+                                    3
+                                </span>
+                            </a>
+                            <a class="button is-small is-right" ng-click="rateFour()">
+                                <span class="icon is-small">
+                                    4
+                                </span>
+                            </a>
+                            <a class="button is-small is-right" ng-click="rateFive()">
+                                <span class="icon is-small ">
+                                    5
+                                </span>
+                            </a>
+                        </div>
+            </article>
+        <!-- </div> -->
     </div>
+</div>

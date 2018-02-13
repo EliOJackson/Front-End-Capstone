@@ -16,6 +16,16 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
     }
     // returns a promise for all Dates from the Dates collection in firebase
 
+    function getOneDate(dateId) {
+        return $q((resolve, reject) => {
+            $http.get(`${FBUrl}/dates/${dateId}.json`)
+                .then(({ data }) => {
+                    data.dateId = dateId;
+                    console.log("one date", data);
+                    resolve(data);
+                });
+        });
+    }
     function save(date) {
         // return a promise to post an saved date to the SAVED colletion in firebase
         return $q((resolve, reject) => {
@@ -99,5 +109,5 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
     }
 
-    return { getAllDates, addDate, getSavedDates, getDateComments, save, datesToPrint, rate };
+    return { getAllDates, addDate, getSavedDates, getDateComments, save, datesToPrint, rate, getOneDate };
 });   
