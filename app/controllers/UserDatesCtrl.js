@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q, RatingFactory) {
+angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q, RatingFactory, $http, FBUrl) {
     $scope.title = "User's Dates";
     $scope.dates = [];
  
@@ -8,37 +8,35 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
         .then(data => {
             let promiseArray = [];
             let savedDateIds = Object.entries(data);
-            console.log('savedDateIds',savedDateIds);
             savedDateIds.forEach(savedDateId => {
-                console.log("test",savedDateId[1].dateId);
-                let saved = DateFactory.datesToPrint(savedDateId[1].dateId);
+                savedDateId[1].fbKey = savedDateId[0];
+                console.log('savedDateId',savedDateId[0]);
+                console.log("test",savedDateId[1]);
+                let saved = DateFactory.datesToPrint(savedDateId[1].dateId, savedDateId[1].fbKey);
                 promiseArray.push(saved);
+                
                 
 
             });
             return $q.all(promiseArray)
                 .then((dates ) => {
                     dates.forEach(date => {
-                    console.log(date.data, "pls");
-                    $scope.dates.push(date.data);
-                        
+                    $scope.dates.push(date.data);     
+                    RatingFactory.rateDates($scope.dates);
                 });
-                
-                // RatingFactory.rateDates(dates);
-                // }
-                    console.log(RatingFactory.rateDates($scope.dates));
-                    console.log('$scope.dates',$scope.dates);
-                });
+            });
         });
 
-    $scope.delete = (dateId) => {
-        // return $q((resolve, reject) => {
-            // $http
-            // .delete(`${FBUrl}/saved/${boardId}.json`
-        // console.log("this", dateId); 
-        // $scope.saved.dateId = this.date.dateId;
-        // $scope.saved.uid = firebase.auth().currentUser.uid;
-        console.log('this.date.dateId', this.date);
-        console.log('firebase.auth().currentUser.uid', firebase.auth().currentUser.uid);
+    $scope.delete = (savedKey) => {
+        return $q((resolve, reject) => {
+            $http
+            .delete(`${FBUrl}/saved/${savedKey}.json`
+        );
+            console.log("this", savedKey); 
+            // $scope.saved.dateId = this.date.dateId;
+            // $scope.saved.uid = firebase.auth().currentUser.uid;
+            console.log('this.date.dateId', this.date);
+            console.log('firebase.auth().currentUser.uid', firebase.auth().currentUser.uid);
+        });
     };
 });

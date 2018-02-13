@@ -60,12 +60,14 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         });
     }
 
-    function datesToPrint(dateId) {
+    function datesToPrint(dateId, fbKey) {
+        console.log("tuck test", dateId, fbKey);
         return $q((resolve, reject) => {
             $http
                 .get(`${FBUrl}dates/${dateId}.json`)
                 .then(data => {
                     data.data.dateId = dateId;
+                    data.data.savedKey = fbKey;
                     console.log(data.data, "dates to print");
                     resolve(data);
                 })
