@@ -27,5 +27,37 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         };
         DateFactory.rate(obj);
     };
+    $scope.rateFour = function () {
+        let obj = {
+            dateId: this.date.dateId,
+            rating: 4,
+            uid: firebase.auth().currentUser.uid
+        };
+        DateFactory.rate(obj);
+    };
+    $scope.rateThree = function () {
+        let obj = {
+            dateId: this.date.dateId,
+            rating: 3,
+            uid: firebase.auth().currentUser.uid
+        };
+        DateFactory.rate(obj);
+    };
+    $scope.rateTwo = function () {
+        let obj = {
+            dateId: this.date.dateId,
+            rating: 2,
+            uid: firebase.auth().currentUser.uid
+        };
+        DateFactory.rate(obj);
+    };
+    $scope.rateOne = function () {
+        let obj = {
+            dateId: this.date.dateId,
+            rating: 1,
+            uid: firebase.auth().currentUser.uid
+        };
+        DateFactory.rate(obj);
+    };
 
 });
