@@ -1,6 +1,6 @@
 'use strict'; 
 
-angular.module("Datr", ["ngRoute", "ngLodash"])
+angular.module("Datr", ["ngRoute", "angularUtils.directives.dirDisqus"])
     .constant("FBUrl", "https://tucker-jackson-capstone.firebaseio.com/")
     .config(($routeProvider) => {
         $routeProvider
