@@ -33,10 +33,21 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
     }
 
 
-    function addDate(item, location) {
-        // return a promise to post a date to the Date colletion in firebase
-        // may also use this to add date to saved dates as well?
-    }
+    function addDate(item) {
+            // return a promise to post an image to the IMAGES colletion in firebase
+            return $q((resolve, reject) => {
+                $http
+                    .post(`${FBUrl}/dates.json`, JSON.stringify(item))
+                    .then(data => {
+                        console.log("New Date posted");
+                        resolve(data);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        reject(error);
+                    });
+            });
+        }
 
     function getSavedDates(uid) {
         return $q((resolve, reject) => {

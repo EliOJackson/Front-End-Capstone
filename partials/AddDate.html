@@ -1,1 +1,39 @@
 This is my {{title}} page!
+
+<div class="level">
+    <div class="level-item has-text-centered">
+        <div class="box add-content-form">
+
+            <div class="field">
+                <label class="label">{{inputOne}}</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{inputTwo}}</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Description Here" ng-model="date.description"></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{inputThree}}</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Address" ng-model="date.location">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{inputFour}}</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                </div>
+            </div>
+            <div class="control">
+                <button class="button" ng-click="saveItem()">{{buttonName}}</button>
+            </div>
+        </div>
+    </div>
+</div>
