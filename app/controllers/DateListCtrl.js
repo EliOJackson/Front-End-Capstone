@@ -8,10 +8,11 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         .then(data => {
             $scope.dates = data;
             console.log($scope.dates, "huh??");
-            RatingFactory.rateDates(data)
-                .then(info => {
-                    console.log($scope.dates, "why???");
-                });
+            RatingFactory.rateDates(data);
+                // .then(info => {
+                //     console.log($scope.dates, "why???");
+                //     console.log(info, "what???");
+                // });
             });
 
     $scope.saveDate = function () {

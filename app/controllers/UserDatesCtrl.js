@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q) {
+angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q, RatingFactory) {
     $scope.title = "User's Dates";
     $scope.dates = [];
  
@@ -9,14 +9,24 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
             let promiseArray = [];
             let savedDateIds = Object.entries(data);
             savedDateIds.forEach(savedDateId => {
-                console.log(savedDateId[1].dateId);
+                console.log("test",savedDateId[1].dateId);
                 let saved = DateFactory.datesToPrint(savedDateId[1].dateId);
                 promiseArray.push(saved);
+                
 
             });
             return $q.all(promiseArray)
-                .then((dates) => {
-                    $scope.dates = dates;
+                .then(( dates ) => {
+                    console.log(dates, "pls");
+                    dates.forEach(date => {
+                        console.log('date',date);
+                        console.log('savedDateId',savedDateIds);
+                    //     // console.log(RatingFactory.rateDates(date.data));
+                    //     console.log('date.data',date.data);
+                    //     $scope.dates.push(date.data);
+                    });
+                    console.log(RatingFactory.rateDates($scope.dates));
+                    console.log('$scope.dates',$scope.dates);
                 });
         });
 });
