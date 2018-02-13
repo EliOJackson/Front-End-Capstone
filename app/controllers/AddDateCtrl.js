@@ -4,7 +4,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory) 
     $scope.title = "Add Date";
     $scope.inputOne = "Date Name";
     $scope.inputTwo = "Date Description";
-    $scope.inputThree = "Date Location";
+    $scope.inputThree = "Date Address";
     $scope.inputFour = "Img Url";
     $scope.buttonName = "Upload Date";
 
@@ -18,7 +18,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory) 
     $scope.saveItem = () => {
         DateFactory.addDate($scope.date, "dates")
             .then((data) => {
-                
+
             });
     };
 

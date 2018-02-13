@@ -1,9 +1,10 @@
 "use strict";
 
-angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q, RatingFactory, $http, FBUrl) {
+angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory, $routeParams, $q, RatingFactory, $http, FBUrl, FilterFactory) {
     $scope.title = "User's Dates";
     $scope.dates = [];
-
+    $scope.search = FilterFactory;
+    
     DateFactory.getSavedDates($routeParams.uid)
         .then(data => {
             let promiseArray = [];

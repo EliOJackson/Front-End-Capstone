@@ -1,7 +1,9 @@
 "use strict";
 
-angular.module("Datr").controller("NavCtrl", function ($scope, AuthFactory) {
-    
+angular.module("Datr").controller("NavCtrl", function ($scope, AuthFactory, FilterFactory) {
+    $scope.search = FilterFactory;
+
+
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             $scope.$apply($scope.user = true);
