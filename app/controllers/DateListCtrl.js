@@ -1,16 +1,17 @@
 "use strict";
 
-angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, RatingFactory, FilterFactory) {
+angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory, $q, RatingFactory, FilterFactory, $window, $route) {
     $scope.title = "Date List";
     $scope.saved = {};
     $scope.search = FilterFactory;
 
+    function load() {
     DateFactory.getAllDates()
         .then(data => {
             $scope.dates = data;
-            console.log($scope.dates, "huh??");
             RatingFactory.rateDates(data); // MAGIC, automatically updates $scope.dates
             });
+        }
 
     $scope.saveDate = function () {
         $scope.saved.dateId = this.date.dateId;
@@ -26,6 +27,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             uid: firebase.auth().currentUser.uid
         };
         DateFactory.rate(obj);
+        saveAlert(obj);
+        load();
     };
     $scope.rateFour = function () {
         let obj = {
@@ -34,6 +37,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             uid: firebase.auth().currentUser.uid
         };
         DateFactory.rate(obj);
+        saveAlert(obj);     
+        load();   
     };
     $scope.rateThree = function () {
         let obj = {
@@ -42,6 +47,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             uid: firebase.auth().currentUser.uid
         };
         DateFactory.rate(obj);
+        saveAlert(obj);   
+        load();     
     };
     $scope.rateTwo = function () {
         let obj = {
@@ -50,6 +57,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             uid: firebase.auth().currentUser.uid
         };
         DateFactory.rate(obj);
+        saveAlert(obj);  
+        load();      
     };
     $scope.rateOne = function () {
         let obj = {
@@ -58,6 +67,13 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             uid: firebase.auth().currentUser.uid
         };
         DateFactory.rate(obj);
+        saveAlert(obj);     
+        load();   
     };
 
+    function saveAlert(obj) {
+       $window.alert(`You just rated it a ${obj.rating} out of 5!` );
+    }
+
+    load();
 });
