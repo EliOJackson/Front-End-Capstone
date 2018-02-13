@@ -8,11 +8,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         .then(data => {
             $scope.dates = data;
             console.log($scope.dates, "huh??");
-            RatingFactory.rateDates(data);
-                // .then(info => {
-                //     console.log($scope.dates, "why???");
-                //     console.log(info, "what???");
-                // });
+            RatingFactory.rateDates(data); // MAGIC, automatically updates $scope.dates
             });
 
     $scope.saveDate = function () {
@@ -23,17 +19,13 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         console.log('firebase.auth().currentUser.uid',firebase.auth().currentUser.uid);
     };
 
-
-    // function getAllPreferredEvents() {
-    //     var promises = [];
-    //     for (var i = 0; i < $scope.preferences.length; i++) {
-    //         var promise = EventFactory.getEventsByType($scope.preferences[i]);
-    //         promises.push(promise);
-    //     }
-    //     console.log("promises", promises);
-    //     $q.all(promises).then((data) => {
-    //         flattenObjects(data);
-    //     });
-    // }
+    $scope.rateFive = function () {
+        let obj = {
+            dateId: this.date.dateId,
+            rating: 5,
+            uid: firebase.auth().currentUser.uid
+        };
+        DateFactory.rate(obj);
+    };
 
 });
