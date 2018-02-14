@@ -64,7 +64,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
         });
     }
     function newRate(obj) {
-        // return a promise to post an saved date to the SAVED colletion in firebase
         return $q((resolve, reject) => {
             $http
                 .post(`${FBUrl}/rating.json`, JSON.stringify(obj))
@@ -79,7 +78,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
         });
     }
     function patchRate(obj, ratingKey) {
-        // return a promise to post an saved date to the SAVED colletion in firebase
         return $q((resolve, reject) => {
             $http
                 .patch(`${FBUrl}/rating/${ratingKey}.json`, JSON.stringify(obj))
