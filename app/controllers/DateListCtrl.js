@@ -45,73 +45,51 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                 }
                 else {
                     DateFactory.save(saveObj);
+                    $window.alert(`You just saved ${this.date.name} as a date!`);
                 }
             });
     };
 
-    //     console.log('this.date.dateId',this.date.dateId);
-    //     });
-    //     // $scope.saved.dateId = this.date.dateId;
-    //     // $scope.saved.uid = firebase.auth().currentUser.uid;
-    //     // DateFactory.save($scope.saved);
-    //     // $window.alert(`You saved ${this.date.name} to your saved dates!`);
-    // };
-
     $scope.rate = function (rating) {
+        let rateArray = [];
         let obj = {
             dateId: this.date.dateId,
             rating: rating,
             uid: firebase.auth().currentUser.uid
         };
-        DateFactory.rate(obj)
-            .then(() => {
-                saveAlert(obj);
-                load();
+        let dateId = this.date.dateId;
+        console.log(this.date.dateId, "rate click");
+        RatingFactory.getDateRating(dateId)
+            .then((data) => {
+                let rateObjects = Object.entries(data);
+                rateObjects.forEach(rateObject => {
+                    if (rateObject[1].uid === firebase.auth().currentUser.uid) {
+                        rateArray.push(rateObject);
+                    }
+                });
+                if (rateArray !== undefined) {
+                    let ratingToUpdate = rateArray[0][0];
+                    RatingFactory.patchRate(obj, ratingToUpdate)
+                        .then(() => {
+                            patchRateAlert(obj);
+                            load();
+                        });
+                }
+                else {
+                    RatingFactory.newRate(obj)
+                        .then(() => {
+                            newRateAlert(obj);
+                            load();
+                        });
+                }
             });
     };
-    // $scope.rateFour = function () {
-    //     let obj = {
-    //         dateId: this.date.dateId,
-    //         rating: 4,
-    //         uid: firebase.auth().currentUser.uid
-    //     };
-    //     DateFactory.rate(obj);
-    //     saveAlert(obj);     
-    //     load();   
-    // };
-    // $scope.rateThree = function () {
-    //     let obj = {
-    //         dateId: this.date.dateId,
-    //         rating: 3,
-    //         uid: firebase.auth().currentUser.uid
-    //     };
-    //     DateFactory.rate(obj);
-    //     saveAlert(obj);   
-    //     load();     
-    // };
-    // $scope.rateTwo = function () {
-    //     let obj = {
-    //         dateId: this.date.dateId,
-    //         rating: 2,
-    //         uid: firebase.auth().currentUser.uid
-    //     };
-    //     DateFactory.rate(obj);
-    //     saveAlert(obj);  
-    //     load();      
-    // };
-    // $scope.rateOne = function () {
-    //     let obj = {
-    //         dateId: this.date.dateId,
-    //         rating: 1,
-    //         uid: firebase.auth().currentUser.uid
-    //     };
-    //     DateFactory.rate(obj);
-    //     saveAlert(obj);     
-    //     load();   
-    // };
 
-    function saveAlert(obj) {
+    function newRateAlert(obj) {
         $window.alert(`You just rated it a ${obj.rating} out of 5!`);
+    }
+    function patchRateAlert(obj) {
+        $window.alert(`You just updated your rating to ${obj.rating} out of 5!`);
     }
 
     load();

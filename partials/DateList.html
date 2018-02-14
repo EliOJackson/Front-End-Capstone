@@ -11,7 +11,7 @@ This is my {{title}} page!
                         <a class=""href="#!/dates/{{date.dateId}}">
                             <img ng-src="{{date.url}}" alt="" />
                         </a>
-                        <div class="buttons has-addons">
+                        <div ng-if="user" class="buttons has-addons">
                             <button class="button" ng-click="saveDate()">Save it!</button>
                             <a class="button is-small is-right" ng-click="rate(1)">
                                 <span class="icon is-small">

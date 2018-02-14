@@ -1,17 +1,19 @@
 This is my {{title}} page!
 
-<div class="imgWrap">
-    <div id="columns">
-        <div class="box imgBox" ng-repeat="date in dates | filter: search.term">
-            <h3 class="title">{{date.name}}</h3>
-            <h4>{{date.description}}</h4>
-            <h4>Avg Rating: {{date.rating}}</h4>
+<div class="columns is-multiline">
+    <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
+        <div class="box">
+            <article class="tile is-child">
+                <h3 class="title">{{date.name}}</h3>
+                <h4>{{date.description}}</h4>
+                <h4>Avg Rating: {{date.rating}}</h4>
                 <div>
                     <img ng-src="{{date.url}}" alt="" />
                 </div>
                 <div class="buttons has-addons">
                     <button class="button" ng-click="delete(date.savedKey)">Delete!</button>
                 </div>
+            </article>
         </div>
     </div>
 </div>

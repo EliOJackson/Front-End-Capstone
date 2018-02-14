@@ -63,7 +63,37 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
                 });
         });
     }
+    function newRate(obj) {
+        // return a promise to post an saved date to the SAVED colletion in firebase
+        return $q((resolve, reject) => {
+            $http
+                .post(`${FBUrl}/rating.json`, JSON.stringify(obj))
+                .then(data => {
+                    console.log("New Rating!");
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    reject(error);
+                });
+        });
+    }
+    function patchRate(obj, ratingKey) {
+        // return a promise to post an saved date to the SAVED colletion in firebase
+        return $q((resolve, reject) => {
+            $http
+                .patch(`${FBUrl}/rating/${ratingKey}.json`, JSON.stringify(obj))
+                .then(data => {
+                    console.log("UpdatedRating!");
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    reject(error);
+                });
+        });
+    }
 
-    return { rateDates, average, dateLoop, getDateRating };
+    return { rateDates, average, dateLoop, getDateRating, newRate, patchRate };
 
 });
