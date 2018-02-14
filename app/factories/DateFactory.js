@@ -104,10 +104,21 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         });
     }
 
+    function deleteSaved (savedKey) {
+        return $q((resolve, reject) => {
+            $http
+                .delete(`${FBUrl}/saved/${savedKey}.json`
+                )
+                .then(data => {
+                    resolve();
+                });
+        });
+    }
+
     function getDateComments(uid, dateKey) {
 
         //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
     }
 
-    return { getAllDates, addDate, getSavedDates, getDateComments, save, datesToPrint, rate, getOneDate };
+    return { getAllDates, addDate, getSavedDates, getDateComments, save, datesToPrint, rate, getOneDate, deleteSaved };
 });   

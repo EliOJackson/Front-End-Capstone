@@ -17,7 +17,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         $scope.saved.dateId = this.date.dateId;
         $scope.saved.uid = firebase.auth().currentUser.uid;
         DateFactory.save($scope.saved);
-        
+        $window.alert(`You saved ${this.date.name} to your saved dates!`);
     };
 
     $scope.rateFive = function () {

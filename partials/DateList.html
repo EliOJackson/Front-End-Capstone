@@ -1,14 +1,14 @@
 This is my {{title}} page!
 
 
-<div class="columns is-multiline tile is-parent">
+<div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
-        <!-- <div class="tile is-parent"> -->
+        <div class="box">
             <article class="tile is-child">
                  <h3 class="title">{{date.name}}</h3>
                     <h4>{{date.description}}</h4>
-                        <h5>{{date.rating}} </h5>
-                        <a class="image is-4b3" href="#!/dates/{{date.dateId}}">
+                        <h5>Avg Rating: {{date.rating}} </h5>
+                        <a class=""href="#!/dates/{{date.dateId}}">
                             <img ng-src="{{date.url}}" alt="" />
                         </a>
                         <div class="buttons has-addons">
@@ -40,6 +40,6 @@ This is my {{title}} page!
                             </a>
                         </div>
             </article>
-        <!-- </div> -->
+            </div>
     </div>
 </div>

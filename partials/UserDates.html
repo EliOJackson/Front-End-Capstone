@@ -5,7 +5,7 @@ This is my {{title}} page!
         <div class="box imgBox" ng-repeat="date in dates | filter: search.term">
             <h3 class="title">{{date.name}}</h3>
             <h4>{{date.description}}</h4>
-            <h4>{{date.rating}}</h4>
+            <h4>Avg Rating: {{date.rating}}</h4>
                 <div>
                     <img ng-src="{{date.url}}" alt="" />
                 </div>
