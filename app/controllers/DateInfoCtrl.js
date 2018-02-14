@@ -10,6 +10,16 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
         disqus_url: `http://127.0.0.1:8080/#!/dates/${$routeParams.dateId}`
     };
 
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            $scope.$apply($scope.user = true);
+            $scope.uid = firebase.auth().currentUser.uid;
+
+        } else {
+            $scope.$apply($scope.user = false);
+        }
+    });
+
     DateFactory.getOneDate($scope.dateId.dateId)
     .then(data => {
         $scope.dates = [];
@@ -18,12 +28,29 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
         console.log($scope.dates, "idk");
     });
 
+    //function to save a date to a users Profile. Creates a Saved Object in Firebase.
     $scope.saveDate = function () {
-        console.log('this',this.date.dateId);
-        $scope.saved.dateId = this.date.dateId;
-        $scope.saved.uid = firebase.auth().currentUser.uid;
-        DateFactory.save($scope.saved);
-        $window.alert(`You saved ${this.date.name} to your saved dates!`);
+        DateFactory.getSavedDates($scope.uid)
+            .then((data) => {
+                let saveObj = {                 // this obj will be passed into the save function
+                    dateId: this.date.dateId,
+                    uid: $scope.uid
+                };
+                let saveArray = [];
+                let dateArrays = (Object.entries(data));
+                dateArrays.forEach(dateArray => {
+                    if (dateArray[1].dateId === this.date.dateId && dateArray[1].uid === $scope.uid) {
+                        saveArray.push(dateArray[1]);    //checks to find if this date is already saved by this user, if it is, pushes that into an array.
+                    }
+                });
+                if (saveArray[0] !== undefined) {     // if a duplicate date has been pushed to this array, will run alert
+                    $window.alert("You've already saved this date you Dingus!");
+                }
+                else {                                  // if no date has been pushed, save function is ran.
+                    DateFactory.save(saveObj);
+                    $window.alert(`You just saved ${this.date.name} as a date!`);
+                }
+            });
     };
 
 });

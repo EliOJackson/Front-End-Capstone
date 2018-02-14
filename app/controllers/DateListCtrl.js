@@ -16,7 +16,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
     });
 
     // this runs on page load and gets all dates. Also called in my rating functions to auto update the page.
-    function load() { 
+    function load() {
         DateFactory.getAllDates()
             .then(data => {
                 $scope.dates = data;
@@ -25,7 +25,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
     }
 
     //function to save a date to a users Profile. Creates a Saved Object in Firebase.
-    $scope.saveDate = function () { 
+    $scope.saveDate = function () {
         DateFactory.getSavedDates($scope.uid)
             .then((data) => {
                 let saveObj = {                 // this obj will be passed into the save function
@@ -35,7 +35,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                 let saveArray = [];
                 let dateArrays = (Object.entries(data));
                 dateArrays.forEach(dateArray => {
-                    if (dateArray[1].dateId === this.date.dateId && dateArray[1].uid === $scope.uid) {  
+                    if (dateArray[1].dateId === this.date.dateId && dateArray[1].uid === $scope.uid) {
                         saveArray.push(dateArray[1]);    //checks to find if this date is already saved by this user, if it is, pushes that into an array.
                     }
                 });
@@ -57,7 +57,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
             rating: rating,
             uid: firebase.auth().currentUser.uid
         };
-        let dateId = this.date.dateId; 
+        let dateId = this.date.dateId;
         RatingFactory.getDateRating(dateId)   // passes date id and gets all ratings for this date
             .then((data) => {
                 let rateObjects = Object.entries(data);
