@@ -66,7 +66,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                         rateArray.push(rateObject);   // if rating exists for user, pushes the rating ob into an empty array
                     }
                 });
-                if (rateArray !== undefined) {       // if array has an object, the patch function wil run, updating the users rating
+                if (rateArray.length > 0) {       // if array has an object, the patch function wil run, updating the users rating
+                    
                     let ratingToUpdate = rateArray[0][0];
                     RatingFactory.patchRate(obj, ratingToUpdate)
                         .then(() => {
