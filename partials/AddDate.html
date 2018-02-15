@@ -5,6 +5,13 @@ This is my {{title}} page!
         <div class="box add-content-form">
 
             <div class="field">
+                <label class="label">Google Search</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Date Name" ng-model="searchInput">
+                </div>
+            </div>
+
+            <div class="field">
                 <label class="label">{{inputOne}}</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
@@ -33,6 +40,9 @@ This is my {{title}} page!
             </div>
             <div class="control">
                 <button class="button" ng-click="saveItem()">{{buttonName}}</button>
+            </div>
+            <div class="control">
+                <button class="button" ng-click="getSearch()">Search It Google</button>
             </div>
         </div>
     </div>
