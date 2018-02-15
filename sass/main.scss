@@ -29,11 +29,15 @@ nav {
   font-size: 1.1rem;
 }
 .input {
-  width: 100%;
+  width: 75%;
   margin-right: 2vw; }
 
+
 .input:hover, .input:focus{
-  border: 3px lightblue solid;
+  border: 3px #ffdd57 solid;
+  }
+.textarea:hover, .textarea:focus{
+  border: 3px #ffdd57 solid;
   }
 
 .comments{
@@ -45,6 +49,17 @@ nav {
   margin: 2rem;
 }
 
+.noBlue:link, .noBlue:hover, .noBlue:visited, .noBlue:active {
+  color: black;
+
+}
+.right {
+  float: right;
+}
+
+.rateBtn {
+  background-color: #daf7a4;
+}
 // .box{
 //   background-color: #84a2cd;
 // }
