@@ -14,7 +14,7 @@ angular.module("Datr").factory("GoogleFactory", function (GoogleCreds, $http, $q
 
     function placeDetails(placeId) {
         return $q((resolve, reject) => {
-            $http.get(`https://tj-datr.herokuapp.com/api/maps/api/place/details/json?placeid=ChIJKYO9OElvZIgRtcwuV00lItw&key=${GoogleCreds.apiKey}`)
+            $http.get(`https://tj-datr.herokuapp.com/api/maps/api/place/details/json?placeid=${placeId}&key=${GoogleCreds.apiKey}`)
             .then((data) => {
                 resolve(data);
             });

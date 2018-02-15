@@ -25,17 +25,17 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     };
 
     $scope.getSearch = () => {
-        // let searchString = $scope.searchInput;
-        // console.log(searchString);
-        // GoogleFactory.search(searchString)
-        // .then((data) => {
-        //     console.log(data[0].id);
-        //     let placeId = data[0].id;
-            GoogleFactory.placeDetails()
+        let searchString = $scope.searchInput;
+        console.log(searchString);
+        GoogleFactory.search(searchString)
+        .then((data) => {
+            console.log(data[0].id);
+            let placeId = data[0].place_id;
+            GoogleFactory.placeDetails(placeId)
             .then((data) => {
                 console.log("places data", data);
             });
-        // });
+        });
     };
 
 });
