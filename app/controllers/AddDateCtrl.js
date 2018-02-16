@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, GoogleFactory) {
+angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, GoogleFactory, $window) {
     $scope.title = "Add Date";
     $scope.inputOne = "Date Name";
     $scope.inputTwo = "Date Description";
@@ -20,6 +20,13 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     $scope.saveItem = () => {
         DateFactory.addDate($scope.date, "dates")
             .then((data) => {
+            $window.alert(`Great Job! You saved ${$scope.date.name} as a date!`);
+                $scope.date = {
+                    name: '',
+                    description: '',
+                    location: '',
+                    url: '',
+                };
 
             });
     };
