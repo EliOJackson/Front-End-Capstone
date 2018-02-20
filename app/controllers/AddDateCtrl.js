@@ -40,7 +40,12 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
             let placeId = data[0].place_id;
             GoogleFactory.placeDetails(placeId)
             .then((data) => {
-                console.log("places data", data);
+                console.log("places data", data.data.result);
+                let searchedPlace = data.data.result;
+                GoogleFactory.placeImages(searchedPlace)
+                .then((data) => {
+                    console.log('placesImage', data);
+                });
             });
         });
     };

@@ -1,4 +1,4 @@
-This is my {{title}} page!
+
 
 <div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
@@ -6,7 +6,7 @@ This is my {{title}} page!
             <article class="tile is-child">
                 <h3 class="title">{{date.name}}</h3>
                 <h4>{{date.description}}</h4>
-                <h4>Avg Rating: {{date.rating}}</h4>
+                <h4 class="tag is-success">Avg Rating: {{date.rating}}</h4>
                 <div>
                     <img ng-src="{{date.url}}" alt="" />
                 </div>
