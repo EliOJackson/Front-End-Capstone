@@ -39,13 +39,9 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
             console.log(data[0].id);
             let placeId = data[0].place_id;
             GoogleFactory.placeDetails(placeId)
-            .then((data) => {
-                console.log("places data", data.data.result);
-                let searchedPlace = data.data.result;
-                GoogleFactory.placeImages(searchedPlace)
-                .then((data) => {
-                    console.log('placesImage', data);
-                });
+            .then((placeInfo) => {
+                console.log("places data", placeInfo);
+            
             });
         });
     };

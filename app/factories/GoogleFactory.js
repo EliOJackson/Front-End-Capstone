@@ -16,21 +16,20 @@ angular.module("Datr").factory("GoogleFactory", function (GoogleCreds, $http, $q
     function placeDetails(placeId) {
         return $q((resolve, reject) => {
             $http.get(`https://tj-datr.herokuapp.com/api/maps/api/place/details/json?placeid=${placeId}&key=${GoogleCreds.apiKey}`)
-            .then((data) => {
-                resolve(data);
+            .then((searchedPlace) => {
+                placeImages(searchedPlace.data.result);
+                console.log("after add", searchedPlace);
+                resolve(searchedPlace.data.result);
             });
         });
     }
 
+    
+
     function placeImages(searchedPlace) {
-        return $q((resolve, reject) => {
-            console.log(searchedPlace.photos[0].photo_reference, "photo ref ih ope");
+        console.log(searchedPlace, "test");
             let imageRef = searchedPlace.photos[0].photo_reference;
-            $http.get(`https://tj-datr.herokuapp.com/api/maps/api/place/photo?maxwidth=400&photoreference=${imageRef}&key=${GoogleCreds.apiKey}`)
-            .then((data) => {
-                resolve(data);
-            });
-        });
+            searchedPlace.image = `https://tj-datr.herokuapp.com/api/maps/api/place/photo?maxwidth=400&photoreference=${imageRef}&key=${GoogleCreds.apiKey}`;
     }
 
     return { search, placeDetails, placeImages };
