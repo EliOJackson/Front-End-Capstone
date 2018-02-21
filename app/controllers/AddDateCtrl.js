@@ -52,4 +52,14 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         });
     };
 
+    $scope.addToForm = (e) => {
+        console.log('this',this);
+        // $scope.date = {
+        //     name: '',
+        //     description: '',
+        //     location: '',
+        //     url: '',
+        // };
+    };
+
 });

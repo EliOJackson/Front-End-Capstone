@@ -3,39 +3,34 @@
 <div class="level">
     <div class="level-item has-text-centered">
         <div class="box add-content-form">
-
             <div class="field">
                 <label class="label">Google Search</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Date Name" ng-model="searchInput">
                 </div>
             </div>
-
             <div class="field">
                 <label class="label">{{inputOne}}</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
                 </div>
             </div>
-
-            <div class="field">
-                <label class="label">{{inputTwo}}</label>
-                <div class="control">
-                    <textarea class="textarea" placeholder="Description Here" ng-model="date.description"></textarea>
-                </div>
-            </div>
-
             <div class="field">
                 <label class="label">{{inputThree}}</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Address" ng-model="date.location">
                 </div>
             </div>
-
             <div class="field">
                 <label class="label">{{inputFour}}</label>
                 <div class="control">
                     <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">{{inputTwo}}</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Description Here" ng-model="date.description"></textarea>
                 </div>
             </div>
             <div class="control">
@@ -64,12 +59,12 @@
                     <img ng-src="{{place.image}}">
                     <h4>{{place.formatted_address}}</h4>
                     <h4>{{place.formatted_phone_number}}</h4>
+                    <button class="button is-info right" ng-click="addToForm()">Create this Date</button>
                 <!-- </a> -->
                 </article>
                 <br>
-                <div ng-if="user" class="buttons has-addons">
-                    <button class="button is-info right" ng-click="saveDate()">Save it!</button>
-                </div>
+                <!-- <div class="buttons has-addons"> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
