@@ -7,8 +7,17 @@ angular.module("Datr").factory("GoogleFactory", function (GoogleCreds, $http, $q
             console.log('searchString',searchString);
             $http.get(`https://tj-datr.herokuapp.com/api/maps/api/place/textsearch/json?query=${searchString} in Nashville&key=${GoogleCreds.apiKey}`)
                 .then((places) => {
-                    console.log("goole search places", places);
-                    resolve(places.data.results);
+                    let promiseArray = [];
+                    console.log("goole search places", places.data.results);
+                    let results = places.data.results;
+                    results.forEach(result => {
+                        promiseArray.push(placeDetails(result.place_id));
+                    });
+                    return $q.all(promiseArray)
+                        .then((data1) => {
+                            console.log('data1',data1);
+                            resolve(data1);
+                        });
                 });
         });
     }

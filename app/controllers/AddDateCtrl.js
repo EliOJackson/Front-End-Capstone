@@ -36,15 +36,19 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         let searchString = $scope.searchInput;
         console.log(searchString);
         GoogleFactory.search(searchString)
-        .then((data) => {
-            console.log(data[0].id);
-            let placeId = data[0].place_id;
-            GoogleFactory.placeDetails(placeId)
-            .then((placeInfo) => {
-                $scope.places.push(placeInfo);
-                console.log("scope.places", $scope.places);
+        .then((searchedPlaces) => {
+            console.log('searchedPlaces',searchedPlaces);
+           $scope.places = searchedPlaces;
+           console.log("scope.places", $scope.places);
+            
+            // console.log(data[0].id);
+            // let placeId = data[0].place_id;
+            // GoogleFactory.placeDetails(placeId)
+            // .then((placeInfo) => {
+            //     console.log("place info", placeInfo);
+            //     $scope.places.push(placeInfo);
                 $scope.searched = true;
-            });
+        //     });
         });
     };
 
