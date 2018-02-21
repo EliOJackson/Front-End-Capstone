@@ -79,18 +79,28 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                     let ratingToUpdate = rateArray[0][0];
                     RatingFactory.patchRate(obj, ratingToUpdate)
                         .then(() => {
-                            patchRateAlert(obj);
+                            $scope.updateRating = obj.rating;
+                            $scope.togglePatchRate();
                             load();
                         });
                 }
                 else {                              // if no rating object exists for user, posts new rating.
                     RatingFactory.newRate(obj)
                         .then(() => {
-                            newRateAlert(obj);
+                            $scope.ratingName = this.$parent.date.name;
+                            $scope.newRating = obj.rating;
+                            $scope.toggleNewRate();
                             load();
                         });
                 }
             });
+    };
+
+    $scope.toggleNewRate = () => {
+        document.querySelector("#newRate").classList.toggle("is-active");
+    };
+    $scope.togglePatchRate = () => {
+        document.querySelector("#patchRate").classList.toggle("is-active");
     };
 
     function newRateAlert(obj) {

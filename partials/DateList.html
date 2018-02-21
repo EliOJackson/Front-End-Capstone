@@ -59,7 +59,7 @@
         <div class="modal-background" ng-click="toggleSaveModal()"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Save Success</p>
+                <p class="modal-card-title">Save Successful!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
             <section ng-repeat"date in dates" class="modal-card-body">
@@ -71,16 +71,16 @@
             </footer>
         </div>
     </div>
-    <!-- save button modal -->
+    <!-- already saved button modal -->
     <div class="modal" id="alreadySaveBtn">
         <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Save Success</p>
+                <p class="modal-card-title">Already Saved!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
             <section ng-repeat"date in dates" class="modal-card-body">
-                <p>ALREADY SAVED</p>
+                <p>You already saved this date, Tiger!</p>
             </section>
             <footer class="modal-card-foot">
                 <button class="button is-success" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
@@ -91,20 +91,37 @@
 </div>
 <!-- already saved button modal -->
 
-<!-- rate button modal -->
-<!-- <div class="modal" id="rateBtn">
-    <div class="modal-background" ng-click="toggleModal()"></div>
+<!-- new rate button modal -->
+<div class="modal" id="newRate">
+    <div class="modal-background" ng-click="toggleNewRate()"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
+            <p class="modal-card-title">New Rating!</p>
             <button class="delete" aria-label="close"></button>
         </header>
         <section ng-repeat"date in dates" class="modal-card-body">
-            <p>You just saved {{savedName}} as a date! </p>
+            <p>You just rated {{ratingName}} a {{newRating}} out of 5!</p>
         </section>
         <footer class="modal-card-foot">
-            <button class="button is-success" ng-click="toggleModal()">Continue Browsing</button>
-            <a class="button" ng-href="#!/user/{{uid}}">My Dates</button>
+            <button class="button is-success" ng-click="toggleNewRate()">Continue Browsing</button>
+            <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
         </footer>
     </div>
-</div> -->
+</div>
+<!-- patch rate -->
+<div class="modal" id="patchRate">
+    <div class="modal-background" ng-click="togglePatchRate()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Updated Rating!</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section ng-repeat"date in dates" class="modal-card-body">
+            <p>You just updated your rating to a {{updateRating}} out of 5! </p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" ng-click="togglePatchRate()">Continue Browsing</button>
+            <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+        </footer>
+    </div>
+</div>
