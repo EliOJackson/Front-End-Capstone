@@ -32,12 +32,19 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
             $route.reload();
         }
     
-    $scope.delete = (savedKey) => {
-        DateFactory.deleteSaved(savedKey)
-        .then(() => {
-            deleteAlert();
-
-        });
+        $scope.toggleDelete = () => {
+            document.querySelector("#deleteBtn").classList.toggle("is-active");         
+        };
+        
+        $scope.delete = (savedKey) => {
+            $scope.toggleDelete();
+            DateFactory.deleteSaved(savedKey)
+            .then(() => {
+            });
+        };
+        
+       $scope.refresh = () => {
+           $route.reload();
     };
 
     load();

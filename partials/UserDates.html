@@ -17,3 +17,20 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="deleteBtn">
+    <div class="modal-background" ng-click="toggleDelete()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Date Deleted!</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <p>Your date has been removed.</p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" ng-click="refresh()">My Dates</button>
+            <a class="button" ng-href="#!/dates">Checkout New Dates</a>
+        </footer>
+    </div>
+</div>
