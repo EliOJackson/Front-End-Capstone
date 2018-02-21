@@ -52,3 +52,59 @@
             </div>
     </div>
 </div>
+
+<!-- save button modal -->
+<div>
+    <div class="modal" id="saveBtn">
+        <div class="modal-background" ng-click="toggleSaveModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Save Success</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section ng-repeat"date in dates" class="modal-card-body">
+                <p>You just saved {{savedName}} as a date! </p>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" ng-click="toggleSaveModal()">Continue Browsing</button>
+                <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+            </footer>
+        </div>
+    </div>
+    <!-- save button modal -->
+    <div class="modal" id="alreadySaveBtn">
+        <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Save Success</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section ng-repeat"date in dates" class="modal-card-body">
+                <p>ALREADY SAVED</p>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
+                <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- already saved button modal -->
+
+<!-- rate button modal -->
+<!-- <div class="modal" id="rateBtn">
+    <div class="modal-background" ng-click="toggleModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section ng-repeat"date in dates" class="modal-card-body">
+            <p>You just saved {{savedName}} as a date! </p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" ng-click="toggleModal()">Continue Browsing</button>
+            <a class="button" ng-href="#!/user/{{uid}}">My Dates</button>
+        </footer>
+    </div>
+</div> -->

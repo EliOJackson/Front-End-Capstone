@@ -15,6 +15,13 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         }
     });
 
+    $scope.toggleSaveModal = () => {
+        document.querySelector("#saveBtn").classList.toggle("is-active");
+    };
+    $scope.toggleAlreadySaveModal = () => {
+        document.querySelector("#alreadySaveBtn").classList.toggle("is-active");
+    };
+
     // this runs on page load and gets all dates. Also called in my rating functions to auto update the page.
     function load() {
         DateFactory.getAllDates()
@@ -40,11 +47,12 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                     }
                 });
                 if (saveArray[0] !== undefined) {     // if a duplicate date has been pushed to this array, will run alert
-                    $window.alert("You've already saved this date you Dingus!");
+                    $scope.toggleAlreadySaveModal();
                 }
                 else {                                  // if no date has been pushed, save function is ran.
                     DateFactory.save(saveObj);
-                    $window.alert(`You just saved ${this.date.name} as a date!`);
+                    $scope.savedName = this.$parent.date.name;
+                    $scope.toggleSaveModal();
                 }
             });
     };
@@ -91,6 +99,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
     function patchRateAlert(obj) {
         $window.alert(`You just updated your rating to ${obj.rating} out of 5!`);
     }
+
+   
 
     load();
 });
