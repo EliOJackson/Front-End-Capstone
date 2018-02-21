@@ -47,10 +47,30 @@
         </div>
     </div>
 </div>
-
-<div ng-show="searched" ng-repeat="place in places">
+<!-- 
     <div ng-show="searched" >{{place.name}}</div>
     <div ng-show="searched">{{place.formatted_address}}</div>
     <div ng-show="searched">{{place.formatted_phone_number}}</div>
     <img ng-src="{{place.image}}">
+</div> -->
+
+<div ng-show="searched" ng-repeat="place in places">
+    <div class="columns is-multiline">
+        <div class="column is-one-third">
+            <div class="box">
+                <!-- <a ng-if="user" class="noBlue" href="#!/dates/{{date.dateId}}"> -->
+                    <article class="tile is-child">
+                    <h2 class="title">{{place.name}}</h2>
+                    <img ng-src="{{place.image}}">
+                    <h4>{{place.formatted_address}}</h4>
+                    <h4>{{place.formatted_phone_number}}</h4>
+                <!-- </a> -->
+                </article>
+                <br>
+                <div ng-if="user" class="buttons has-addons">
+                    <button class="button is-info right" ng-click="saveDate()">Save it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
