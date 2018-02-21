@@ -47,3 +47,10 @@
         </div>
     </div>
 </div>
+
+<div ng-show="searched" ng-repeat="place in places">
+    <div ng-show="searched" >{{place.name}}</div>
+    <div ng-show="searched">{{place.formatted_address}}</div>
+    <div ng-show="searched">{{place.formatted_phone_number}}</div>
+    <img ng-src="{{place.image}}">
+</div>

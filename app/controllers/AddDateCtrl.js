@@ -9,6 +9,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     $scope.buttonName = "Upload Date";
 
    $scope.searchInput = "";
+   $scope.places = [];
 
     $scope.date = {
         name: '',
@@ -40,8 +41,9 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
             let placeId = data[0].place_id;
             GoogleFactory.placeDetails(placeId)
             .then((placeInfo) => {
-                console.log("places data", placeInfo);
-            
+                $scope.places.push(placeInfo);
+                console.log("scope.places", $scope.places);
+                $scope.searched = true;
             });
         });
     };

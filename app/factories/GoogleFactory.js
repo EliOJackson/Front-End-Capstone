@@ -29,7 +29,7 @@ angular.module("Datr").factory("GoogleFactory", function (GoogleCreds, $http, $q
     function placeImages(searchedPlace) {
         console.log(searchedPlace, "test");
             let imageRef = searchedPlace.photos[0].photo_reference;
-            searchedPlace.image = `https://tj-datr.herokuapp.com/api/maps/api/place/photo?maxwidth=400&photoreference=${imageRef}&key=${GoogleCreds.apiKey}`;
+        searchedPlace.image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${imageRef}&key=${GoogleCreds.apiKey}`;
     }
 
     return { search, placeDetails, placeImages };
