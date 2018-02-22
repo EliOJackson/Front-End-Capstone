@@ -1,5 +1,3 @@
-<h1>Datr</h1>
-
 
 <!-- <div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
@@ -53,6 +51,7 @@
 <div class="columns is-multiline">
     <!-- <div class="column is-one-third is-multiline"> -->
         <div class="card column is-one-quarter" ng-repeat="date in dates | filter: search.term">
+            <a class="noBlue" href="#!/dates/{{date.dateId}}">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img ng-src="{{date.url}}" alt="Placeholder image">
@@ -67,18 +66,21 @@
                     </div> -->
                     <div class="">
                         <p class="title is-4">{{date.name}}</p>
+            </a>
+                    <a ng-href="{{date.website}}" target="_blank">
                         <p class="subtitle is-6">{{date.website}}</p>
+                    </a>
                     </div>
                 </div>
 
                 <div class="content">
-                    {{date.description}}
+                    <h4>{{date.description}}</h4>
                     <br>
-                    <h5>Address: {{date.location}}</h5>
-                    <h5>Phone: {{date.phone}}</h5>
+                    <h6>Address: {{date.location}}</h6>
+                    <h6>Phone: {{date.phone}}</h6>
                 </div>
-                <h3 class="tag is-success">Avg Rating: {{date.rating}} </h3>
-                </article>
+            </div>
+                <h3 class="tag rating">Avg Rating: {{date.rating}} </h3>
                 <br>
                 <div ng-if="user" class="buttons has-addons">
                     <a class="button is-small is-right rateBtn" ng-click="rate(1)">
@@ -109,6 +111,7 @@
                 </div>
                 <button class="button is-info right" ng-click="saveDate()">Save it!</button>
             </div>
+        </a>
         </div>
     </div>
 </div>
