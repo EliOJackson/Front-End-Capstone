@@ -1,17 +1,27 @@
-// body {
-//   display: flex;
-//   min-height: 100vh;
-//   flex-direction: column;
-//   background-color: #84a2cd;
-  
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: white;
+  }
 // }
 // #mainContent {
 //   flex: 1;
 // }
 
+.card-content {
+  background-color: #93b0ff;
+}
+.card {
+  background-color: #93b0ff;
+  margin: 1em;
+  border: #84c7cd solid 0em; 
+  border-radius: 1em;
+}
+
 nav {
   margin-top: 0;
-  background: #84cdaf;
+  background: #7b61a8;
 }
 
 .navLinkBox:hover, .navLinkBox:focus {
@@ -67,7 +77,8 @@ nav {
 // }
 
 .navBtn {
-  background-color: #84cdaf; 
+  background-color: #7b61a8;
+  border: solid #7b61a8 .5em; 
 }
 
 .tile {

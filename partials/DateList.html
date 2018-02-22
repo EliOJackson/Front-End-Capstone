@@ -52,7 +52,7 @@
 </div> -->
 <div class="columns is-multiline">
     <!-- <div class="column is-one-third is-multiline"> -->
-        <div class="card column is-one-third" ng-repeat="date in dates | filter: search.term">
+        <div class="card column is-one-quarter" ng-repeat="date in dates | filter: search.term">
             <div class="card-image">
                 <figure class="image is-4by3">
                     <img ng-src="{{date.url}}" alt="Placeholder image">
@@ -77,6 +77,37 @@
                     <h5>Address: {{date.location}}</h5>
                     <h5>Phone: {{date.phone}}</h5>
                 </div>
+                <h3 class="tag is-success">Avg Rating: {{date.rating}} </h3>
+                </article>
+                <br>
+                <div ng-if="user" class="buttons has-addons">
+                    <a class="button is-small is-right rateBtn" ng-click="rate(1)">
+                        <span class="icon is-small">
+                            1
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn" ng-click="rate(2)">
+                        <span class="icon is-small">
+                            2
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn" ng-click="rate(3)">
+                        <span class="icon is-small">
+                            3
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn" ng-click="rate(4)">
+                        <span class="icon is-small">
+                            4
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn" ng-click="rate(5)">
+                        <span class="icon is-small ">
+                            5
+                        </span>
+                    </a>
+                </div>
+                <button class="button is-info right" ng-click="saveDate()">Save it!</button>
             </div>
         </div>
     </div>
