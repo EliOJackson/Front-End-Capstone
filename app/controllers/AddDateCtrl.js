@@ -52,14 +52,16 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         });
     };
 
-    $scope.addToForm = (e) => {
-        console.log('this',this);
-        // $scope.date = {
-        //     name: '',
-        //     description: '',
-        //     location: '',
-        //     url: '',
-        // };
+    $scope.addToForm = function() {
+        $window.scrollTo(0,0);
+        $scope.date = {
+            name: this.place.name,
+            description: '',
+            location: this.place.formatted_address,
+            phone: this.place.formatted_phone_number,
+            url: this.place.image,
+            website: this.place.website
+        };
     };
 
 });
