@@ -1,15 +1,13 @@
 <h1>Datr</h1>
 
 
-<div class="columns is-multiline">
+<!-- <div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
         <div class="box">
             <a ng-if = "user" class="noBlue"href="#!/dates/{{date.dateId}}">
                 <article class="tile is-child">
                 <h2 class="title">{{date.name}}</h2>
                 <h3>{{date.description}}</h3>
-                <!-- <span class="tag is-success"> -->
-                    <!-- </span> -->
                     <img ng-src="{{date.url}}" alt="" />
                 </a>
                 <a ng-if = "!user" class="noBlue"href="">
@@ -50,6 +48,37 @@
                         <button class="button is-info right" ng-click="saveDate()">Save it!</button>
                         </div>
             </div>
+    </div>
+</div> -->
+<div class="columns is-multiline">
+    <!-- <div class="column is-one-third is-multiline"> -->
+        <div class="card column is-one-third" ng-repeat="date in dates | filter: search.term">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img ng-src="{{date.url}}" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <!-- <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div> -->
+                    <div class="">
+                        <p class="title is-4">{{date.name}}</p>
+                        <p class="subtitle is-6">{{date.website}}</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    {{date.description}}
+                    <br>
+                    <h5>Address: {{date.location}}</h5>
+                    <h5>Phone: {{date.phone}}</h5>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

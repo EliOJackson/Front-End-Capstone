@@ -1,13 +1,13 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: #84a2cd;
+// body {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+//   background-color: #84a2cd;
   
-}
-#mainContent {
-  flex: 1;
-}
+// }
+// #mainContent {
+//   flex: 1;
+// }
 
 nav {
   margin-top: 0;
@@ -61,13 +61,17 @@ nav {
   background-color: #84cdaf;
 }
 
-img {
-  width: 75%;
-  height: auto;
-}
+// img {
+//   width: 75%;
+//   height: auto;
+// }
 
 .navBtn {
   background-color: #84cdaf; 
+}
+
+.tile {
+  height: 100%;
 }
 // .box{
 //   background-color: #84a2cd;

@@ -21,7 +21,8 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     $scope.saveItem = () => {
         DateFactory.addDate($scope.date, "dates")
             .then((data) => {
-            $window.alert(`Great Job! You saved ${$scope.date.name} as a date!`);
+                $scope.createdName = $scope.date.name;
+            $scope.toggleCreateDate();
                 $scope.date = {
                     name: '',
                     description: '',
@@ -50,6 +51,10 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
                 $scope.searched = true;
         //     });
         });
+    };
+
+    $scope.toggleCreateDate = () => {
+        document.querySelector("#createDate").classList.toggle("is-active");
     };
 
     $scope.addToForm = function() {

@@ -82,3 +82,20 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="createDate">
+    <div class="modal-background" ng-click="toggleCreateDate()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Date Created!</p>
+            <button class="delete" aria-label="close" ng-click="toggleCreateDate()"></button>
+        </header>
+        <section class="modal-card-body">
+            <p>You just added {{createdName}} to Datr! Thanks for your contribution! </p>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success" ng-click="toggleCreateDate()">Create more Dates</button>
+            <a class="button" ng-href="#!/dates">View All Dates</a>
+        </footer>
+    </div>
+</div>
