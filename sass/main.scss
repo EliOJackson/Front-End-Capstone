@@ -11,7 +11,7 @@ body {
 
 nav {
   margin-top: 0;
-  background: #e28ee6;
+  background: #84cdaf;
 }
 
 .navLinkBox:hover, .navLinkBox:focus {
@@ -34,10 +34,10 @@ nav {
 
 
 .input:hover, .input:focus{
-  border: 3px #ffdd57 solid;
+  border: 3px #84cdaf solid;
   }
 .textarea:hover, .textarea:focus{
-  border: 3px #ffdd57 solid;
+  border: 3px #84cdaf solid;
   }
 
 .comments{
@@ -58,12 +58,16 @@ nav {
 }
 
 .rateBtn {
-  background-color: #daf7a4;
+  background-color: #84cdaf;
 }
 
 img {
   width: 75%;
   height: auto;
+}
+
+.navBtn {
+  background-color: #84cdaf; 
 }
 // .box{
 //   background-color: #84a2cd;
