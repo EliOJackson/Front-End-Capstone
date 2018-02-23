@@ -41,10 +41,21 @@ nav {
   margin: auto
 }
 
-.rating {
-  background-color: #7b61a8 !important;
-  color: white !important;
+.description {
+  margin: 0;
+}
 
+.rating {
+    background-color: #7b61a8 !important;
+    color: white !important;
+    position: absolute;
+    left: 14.4rem;
+    top: 16.25em;
+
+}
+
+.relative {
+  position: relative;
 }
 
 // .navLinkBox:hover, .navLinkBox:focus {
@@ -96,7 +107,13 @@ nav {
 }
 
 .rateBtn {
-  background-color: #84cdaf;
+  background-color: #fdd3ff;
+  // border: solid 2px #7b61a8;
+}
+
+.rateBtn:hover, .rateBtn.is-hovered {
+  background-color: #7b61a8;
+  color: white;
 }
 
 // img {
@@ -108,7 +125,25 @@ nav {
   background-color: #7b61a8;
   border: solid #7b61a8 .5em; 
   color: white;
+  text-align: center;
+  margin: auto;
+  
 }
+
+.saveBtn {
+    background-color: #7b61a8;
+    color: white;
+    text-align: center;
+    margin-right: -1em;
+    margin-bottom: -1em;
+    width: 45%;
+}
+.saveBtn:hover, .saveBtn.is-hovered {
+  border-color: #fdd3ff !important;
+  color: rgba(189, 116, 173, 1);
+}
+
+
 
 .tile {
   height: 100%;

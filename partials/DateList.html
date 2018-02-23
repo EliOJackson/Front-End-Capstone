@@ -78,23 +78,24 @@
                             <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                         </figure>
                     </div> -->
+                    <p class="title is-4">{{date.name}}</p>
                     <div class="">
-                        <p class="title is-4">{{date.name}}</p>
+                            <div class="tag rating">Avg Rating: {{date.rating}} </div>
             </a>
-                    <a ng-href="{{date.website}}" target="_blank">
-                        <p class="subtitle is-6">{{date.website}}</p>
-                    </a>
-                    </div>
-                </div>
-
-                <div class="content">
-                    <h4>{{date.description}}</h4>
-                    <br>
-                    <h6>Address: {{date.location}}</h6>
-                    <h6>Phone: {{date.phone}}</h6>
                 </div>
             </div>
-                <h3 class="tag rating">Avg Rating: {{date.rating}} </h3>
+            <br>
+            <div class="content">
+                <h4 class = "description">{{date.description}}</h4>
+                <br>
+                <h6>Address: {{date.location}}</h6>
+                <h6>Phone: {{date.phone}}</h6>
+                <a ng-href="{{date.website}}" target="_blank">
+                    <p class="subtitle is-6">Visit their page!</p>
+                </a>
+                </div>
+            </div>
+                
                 <br>
                 <div ng-if="user" class="buttons has-addons">
                     <a class="button is-small is-right rateBtn" ng-click="rate(1)">
@@ -123,7 +124,7 @@
                         </span>
                     </a>
                 </div>
-                <button class="button is-info right" ng-click="saveDate()">Save it!</button>
+                <button class="button saveBtn right" ng-click="saveDate()">Save it!</button>
             </div>
         </a>
         </div>

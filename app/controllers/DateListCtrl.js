@@ -89,6 +89,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                         .then(() => {
                             $scope.ratingName = this.$parent.date.name;
                             $scope.newRating = obj.rating;
+                            console.log('$scope.ratingName',$scope.ratingName);
                             $scope.toggleNewRate();
                             load();
                         });
