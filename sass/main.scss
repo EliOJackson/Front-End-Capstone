@@ -38,6 +38,10 @@ body {
   flex-direction: column;
 }
 
+.card:hover, .card:focus {
+  box-shadow: -5px 10px 5px rgba(189, 116, 173, 1);
+}
+
 nav {
   margin-top: 0;
   background: #7b61a8;
@@ -192,4 +196,16 @@ nav {
 .heroColor {
   background-color: #d3d7ff;
   margin-bottom: 1em;
+}
+
+.modalCont {
+  background-color: #7b61a8 !important;
+  color: white;
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  
+}
+
+.modalP {
+  font-size: 2em;
 }

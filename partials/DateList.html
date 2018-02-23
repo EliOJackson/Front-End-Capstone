@@ -1,3 +1,4 @@
+
 <!-- <div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
         <div class="box">
@@ -63,11 +64,11 @@
 
 <div class="columns is-multiline">
     <!-- <div class="column is-one-third is-multiline"> -->
-    <div class="card column is-one-quarter" ng-repeat="date in dates | filter: search.term">
-        <a class="noBlue" href="#!/dates/{{date.dateId}}">
+        <div class="card column is-one-quarter" ng-repeat="date in dates | filter: search.term">
+            <a class="noBlue" href="#!/dates/{{date.dateId}}">
             <div class="card-image">
                 <figure class="image is-1by1">
-                    <img class="relative" ng-src="{{date.url}}" alt="Placeholder image">
+                    <img ng-src="{{date.url}}" alt="Placeholder image">
                 </figure>
             </div>
             <div class="card-content">
@@ -79,53 +80,54 @@
                     </div> -->
                     <p class="title is-4">{{date.name}}</p>
                     <div class="">
-
+                    <div class="tag rating">Avg Rating: {{date.rating}} </div>
+            </a>
+                </div>
+            </div>
+            <br>
+            <div class="content">
+                <br>
+                <h6>Address: {{date.location}}</h6>
+                <h6>Phone: {{date.phone}}</h6>
+                <a ng-href="{{date.website}}" target="_blank">
+                    <p class="subtitle is-6">Visit their page!</p>
+                </a>
+                </div>
+            </div>
+                
+                <br>
+                <div ng-if="user" class="buttons has-addons">
+                    <a class="button is-small is-right rateBtn r1" ng-click="rate(1)">
+                        <span class="icon is-small">
+                            1
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn r2" ng-click="rate(2)">
+                        <span class="icon is-small">
+                            2
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn r3" ng-click="rate(3)">
+                        <span class="icon is-small">
+                            3
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn r4" ng-click="rate(4)">
+                        <span class="icon is-small">
+                            4
+                        </span>
+                    </a>
+                    <a class="button is-small is-right rateBtn r5" ng-click="rate(5)">
+                        <span class="icon is-small ">
+                            5
+                        </span>
+                    </a>
+                </div>
+                <button class="button saveBtn right" ng-click="saveDate()">Save it!</button>
+            </div>
         </a>
         </div>
-        </div>
-        <div class="content">
-            <h6>Address: {{date.location}}</h6>
-            <h6>Phone: {{date.phone}}</h6>
-            <a ng-href="{{date.website}}" target="_blank">
-                <p class="subtitle is-6">Visit their page!</p>
-            </a>
-        </div>
-        </div>
-
-        <br>
-        <div ng-if="user" class="buttons has-addons">
-            <div class="tag rating">Avg Rating: {{date.rating}} </div>
-            <a class="button is-small is-right rateBtn r1" ng-click="rate(1)">
-                <span class="icon is-small">
-                    1
-                </span>
-            </a>
-            <a class="button is-small is-right rateBtn r2" ng-click="rate(2)">
-                <span class="icon is-small">
-                    2
-                </span>
-            </a>
-            <a class="button is-small is-right rateBtn r3" ng-click="rate(3)">
-                <span class="icon is-small">
-                    3
-                </span>
-            </a>
-            <a class="button is-small is-right rateBtn r4" ng-click="rate(4)">
-                <span class="icon is-small">
-                    4
-                </span>
-            </a>
-            <a class="button is-small is-right rateBtn r5" ng-click="rate(5)">
-                <span class="icon is-small ">
-                    5
-                </span>
-            </a>
-        </div>
-        <button class="button saveBtn right" ng-click="saveDate()">Save it!</button>
     </div>
-    </a>
-</div>
-</div>
 </div>
 
 <!-- save button modal -->
@@ -134,14 +136,14 @@
         <div class="modal-background" ng-click="toggleSaveModal()"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Save Successful!</p>
+                <p class="modal-card-title modalP">Save Successful!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
-            <section ng-repeat "date in dates" class="modal-card-body">
-                <p>You just saved {{savedName}} as a date! </p>
+            <section ng-repeat"date in dates" class="modal-card-body">
+                <p class = "modalP">You just saved {{savedName}} as a date! </p>
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success" ng-click="toggleSaveModal()">Continue Browsing</button>
+                <button class="button modalCont" ng-click="toggleSaveModal()">Continue Browsing</button>
                 <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
             </footer>
         </div>
@@ -151,14 +153,14 @@
         <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Already Saved!</p>
+                <p class="modal-card-title modalP">Already Saved!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
-            <section ng-repeat "date in dates" class="modal-card-body">
-                <p>You already saved this date, Tiger!</p>
+            <section ng-repeat"date in dates" class="modal-card-body">
+                <p class = "modalP" >You already saved this date, Tiger!</p>
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
+                <button class="button is-success modalCont" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
                 <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
             </footer>
         </div>
@@ -174,7 +176,7 @@
             <p class="modal-card-title">New Rating!</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section ng-repeat "date in dates" class="modal-card-body">
+        <section ng-repeat"date in dates" class="modal-card-body">
             <p>You just rated {{ratingName}} a {{newRating}} out of 5!</p>
         </section>
         <footer class="modal-card-foot">
@@ -191,7 +193,7 @@
             <p class="modal-card-title">Updated Rating!</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section ng-repeat "date in dates" class="modal-card-body">
+        <section ng-repeat"date in dates" class="modal-card-body">
             <p>You just updated your rating to a {{updateRating}} out of 5! </p>
         </section>
         <footer class="modal-card-foot">

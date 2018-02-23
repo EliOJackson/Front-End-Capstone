@@ -51,7 +51,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                 }
                 else {                                  // if no date has been pushed, save function is ran.
                     DateFactory.save(saveObj);
-                    $scope.savedName = this.$parent.date.name;
+                    console.log("this", this);
+                    $scope.savedName = this.date.name;
                     $scope.toggleSaveModal();
                 }
             });
