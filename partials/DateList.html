@@ -135,16 +135,16 @@
     <div class="modal" id="saveBtn">
         <div class="modal-background" ng-click="toggleSaveModal()"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
+            <header class="modal-card-head modalHead">
                 <p class="modal-card-title modalP">Save Successful!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
-            <section ng-repeat"date in dates" class="modal-card-body">
+            <section ng-repeat"date in dates" class="modal-card-body modalColor">
                 <p class = "modalP">You just saved {{savedName}} as a date! </p>
             </section>
-            <footer class="modal-card-foot">
+            <footer class="modal-card-foot modalColor">
                 <button class="button modalCont" ng-click="toggleSaveModal()">Continue Browsing</button>
-                <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
             </footer>
         </div>
     </div>
@@ -152,16 +152,16 @@
     <div class="modal" id="alreadySaveBtn">
         <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
         <div class="modal-card">
-            <header class="modal-card-head">
+            <header class="modal-card-head modalHead">
                 <p class="modal-card-title modalP">Already Saved!</p>
                 <button class="delete" aria-label="close"></button>
             </header>
-            <section ng-repeat"date in dates" class="modal-card-body">
+            <section ng-repeat"date in dates" class="modal-card-body modalColor">
                 <p class = "modalP" >You already saved this date, Tiger!</p>
             </section>
-            <footer class="modal-card-foot">
+            <footer class="modal-card-foot modalColor">
                 <button class="button is-success modalCont" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
-                <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
             </footer>
         </div>
     </div>
@@ -172,16 +172,16 @@
 <div class="modal" id="newRate">
     <div class="modal-background" ng-click="toggleNewRate()"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">New Rating!</p>
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">New Rating!</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section ng-repeat"date in dates" class="modal-card-body">
-            <p>You just rated {{ratingName}} a {{newRating}} out of 5!</p>
+        <section ng-repeat"date in dates" class="modal-card-body modalColor">
+            <p class="modalP">You just rated {{ratingName}} a {{newRating}} out of 5!</p>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" ng-click="toggleNewRate()">Continue Browsing</button>
-            <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+        <footer class="modal-card-foot modalColor">
+            <button class="button is-success modalCont" ng-click="toggleNewRate()">Continue Browsing</button>
+            <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
         </footer>
     </div>
 </div>
@@ -189,16 +189,16 @@
 <div class="modal" id="patchRate">
     <div class="modal-background" ng-click="togglePatchRate()"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Updated Rating!</p>
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">Updated Rating!</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section ng-repeat"date in dates" class="modal-card-body">
-            <p>You just updated your rating to a {{updateRating}} out of 5! </p>
+        <section ng-repeat"date in dates" class="modal-card-body modalColor">
+            <p class="modalP">You just updated your rating to a {{updateRating}} out of 5! </p>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" ng-click="togglePatchRate()">Continue Browsing</button>
-            <a class="button" ng-href="#!/user/{{uid}}">My Dates</a>
+        <footer class="modal-card-foot modalColor">
+            <button class="button is-success modalCont" ng-click="togglePatchRate()">Continue Browsing</button>
+            <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
         </footer>
     </div>
 </div>
