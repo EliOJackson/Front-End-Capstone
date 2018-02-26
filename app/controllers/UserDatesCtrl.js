@@ -47,6 +47,53 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
            $route.reload();
     };
 
+    $scope.rate = function (rating) {
+        let rateArray = [];
+        let obj = {                         //obj to be passed into either rating function
+            dateId: this.date.dateId,
+            rating: rating,
+            uid: firebase.auth().currentUser.uid
+        };
+        let dateId = this.date.dateId;
+        RatingFactory.getDateRating(dateId)   // passes date id and gets all ratings for this date
+            .then((data) => {
+                let rateObjects = Object.entries(data);
+                rateObjects.forEach(rateObject => {
+                    if (rateObject[1].uid === firebase.auth().currentUser.uid) {
+                        rateArray.push(rateObject);   // if rating exists for user, pushes the rating ob into an empty array
+                    }
+                });
+                if (rateArray.length > 0) {       // if array has an object, the patch function wil run, updating the users rating
+
+                    let ratingToUpdate = rateArray[0][0];
+                    RatingFactory.patchRate(obj, ratingToUpdate)
+                        .then(() => {
+                            console.log("obj.rating", obj.rating);
+                            $scope.updateRating = obj.rating;
+                            $scope.togglePatchRate();
+                            load();
+                        });
+                }
+                else {                              // if no rating object exists for user, posts new rating.
+                    RatingFactory.newRate(obj)
+                        .then(() => {
+                            $scope.ratingName = this.$parent.date.name;
+                            $scope.newRating = obj.rating;
+                            console.log('$scope.ratingName', $scope.ratingName);
+                            $scope.toggleNewRate();
+                            load();
+                        });
+                }
+            });
+    };
+
+    $scope.toggleNewRate = () => {
+        document.querySelector("#newRate").classList.toggle("is-active");
+    };
+    $scope.togglePatchRate = () => {
+        document.querySelector("#patchRate").classList.toggle("is-active");
+    };
+
     load();
 
 });

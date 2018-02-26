@@ -18,6 +18,20 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         url: '',
     };
 
+    $scope.googleRadio = () => {
+        $scope.userAdd = false;
+        $scope.google = true;
+        console.log('$scope.google',$scope.google);
+    };
+
+    $scope.userRadio = () => {
+        console.log('$scope.google',$scope.google);
+        $scope.google = false;
+        $scope.userAdd = true;
+    };
+
+
+
     $scope.saveItem = () => {
         DateFactory.addDate($scope.date, "dates")
             .then((data) => {

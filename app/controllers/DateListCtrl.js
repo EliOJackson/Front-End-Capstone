@@ -80,6 +80,7 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                     let ratingToUpdate = rateArray[0][0];
                     RatingFactory.patchRate(obj, ratingToUpdate)
                         .then(() => {
+                            console.log("obj.rating", obj.rating);
                             $scope.updateRating = obj.rating;
                             $scope.togglePatchRate();
                             load();
