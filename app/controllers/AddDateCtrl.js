@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, GoogleFactory, $window) {
+angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, GoogleFactory, $window, $route) {
     $scope.title = "Add Date";
     $scope.inputOne = "Date Name";
     $scope.inputTwo = "Date Description";
@@ -17,6 +17,10 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         location: '',
         url: '',
     };
+
+    $scope.reload = () => {
+        $route.reload();
+    }
 
     $scope.googleRadio = () => {
         $scope.userAdd = false;

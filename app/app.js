@@ -20,7 +20,7 @@ angular.module("Datr", ["ngRoute", "angularUtils.directives.dirDisqus"])
             templateUrl: "partials/UserDates.html",
             controller: "UserDatesCtrl"
         })
-        .otherwise("/", {
+        .otherwise("/dates", {
             templateUrl: "partials/DateList.html",
             controller: "DatelistCtrl"
         });
