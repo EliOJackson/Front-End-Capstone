@@ -1,6 +1,6 @@
 
 
-<div class="columns is-multiline">
+<!-- <div class="columns is-multiline">
     <div class="column is-one-third" ng-repeat="date in dates | filter: search.term">
         <div class="box">
             <article class="tile is-child">
@@ -16,21 +16,95 @@
             </article>
         </div>
     </div>
+</div> -->
+
+<section class="hero">
+    <div class="hero-body heroColor">
+        <div class="container">
+            <h1 class="title">
+                My Saved Dates
+            </h1>
+            <h2 class="subtitle">
+                
+            </h2>
+        </div>
+    </div>
+</section>
+
+<div class="columns is-multiline">
+    <!-- <div class="column is-one-third is-multiline"> -->
+    <div class="card userCard column is-one-quarter" ng-repeat="date in dates | filter: search.term">
+        <a class="noBlue" href="#!/dates/{{date.dateId}}">
+            <div class="card-image">
+                <figure class="image is-1by1">
+                    <img class="imgList" ng-src="{{date.url}}" alt="Placeholder image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <!-- <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                        </figure>
+                    </div> -->
+                    <p class="title is-4">{{date.name}}</p>
+                    <div class="">
+                        <div class="tag rating">Avg Rating: {{date.rating}} </div>
+        </a>
+        </div>
+        </div>
+        <br>
+        <div class="content">
+        </div>
+
+        <br>
+        <!-- <div ng-if="user" class="buttons has-addons">
+            <a class="button is-small is-right rateBtn r1" ng-click="rate(1)">
+                <span class="icon is-small">
+                    1
+                </span>
+            </a>
+            <a class="button is-small is-right rateBtn r2" ng-click="rate(2)">
+                <span class="icon is-small">
+                    2
+                </span>
+            </a>
+            <a class="button is-small is-right rateBtn r3" ng-click="rate(3)">
+                <span class="icon is-small">
+                    3
+                </span>
+            </a>
+            <a class="button is-small is-right rateBtn r4" ng-click="rate(4)">
+                <span class="icon is-small">
+                    4
+                </span>
+            </a>
+            <a class="button is-small is-right rateBtn r5" ng-click="rate(5)">
+                <span class="icon is-small ">
+                    5
+                </span>
+            </a>
+        </div> -->
+        <button class="button saveBtn userCardBtn right" ng-click="delete(date.savedKey)">Delete</button>
+        </div>
+        </a>
+    </div>
+</div>
 </div>
 
 <div class="modal" id="deleteBtn">
     <div class="modal-background" ng-click="toggleDelete()"></div>
     <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Date Deleted!</p>
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">Date Deleted!</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body">
-            <p>Your date has been removed.</p>
+        <section class="modal-card-body modalColor">
+            <p class="modalP">Your date has been removed.</p>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" ng-click="refresh()">My Dates</button>
-            <a class="button" ng-href="#!/dates">Checkout New Dates</a>
+        <footer class="modal-card-foot modalColor">
+            <button class="button is-success modalCont" ng-click="refresh()">My Dates</button>
+            <a class="button modalCont" ng-href="#!/dates">Checkout New Dates</a>
         </footer>
     </div>
 </div>

@@ -52,6 +52,19 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
         //     });
         });
     };
+    $scope.keySearch = (event) => {
+        if (event.keyCode === 13 && $scope.searchInput !== undefined) {
+        let searchString = $scope.searchInput;
+        console.log(searchString);
+        GoogleFactory.search(searchString)
+        .then((searchedPlaces) => {
+            console.log('searchedPlaces',searchedPlaces);
+           $scope.places = searchedPlaces;
+           console.log("scope.places", $scope.places);
+                $scope.searched = true;
+        });
+    }
+};
 
     $scope.toggleCreateDate = () => {
         document.querySelector("#createDate").classList.toggle("is-active");
