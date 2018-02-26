@@ -101,6 +101,27 @@ nav {
 
 }
 
+.infoRating {
+    background-color: #7b61a8 !important;
+    color: white !important;
+    position: absolute;
+    left: 23.55%;
+    bottom: -22.9%;
+}
+
+.infoSave {
+    background-color: #7b61a8;
+    color: white;
+    text-align: center;
+    margin-right: -0.3em;
+    width: 15%;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    border-radius: 5px;
+    position: absolute;
+    left: 16.1%;
+    bottom: -62.7%;
+}
+
 .relative {
   position: relative;
 }

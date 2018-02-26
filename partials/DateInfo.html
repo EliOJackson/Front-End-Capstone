@@ -1,3 +1,16 @@
+<section class="hero">
+    <div class="hero-body heroColor">
+        <div class="container">
+            <h1 class="title">
+                Date Info
+            </h1>
+            <h2 class="subtitle">
+                Check out those Date Deets
+            </h2>
+        </div>
+    </div>
+</section>
+
 <div class="columns" ng-repeat="date in dates | filter: search.term">
     <div class="infoCard column is-one-third">
         <div class="imgBox">
@@ -6,10 +19,8 @@
                     <img class="imgList" ng-src="{{date.url}}" alt="Placeholder image">
                 </figure>
             </div>
-            <h4>{{date.description}}</h4>
-            <h4>Avg Rating: {{date.rating}}</h4>
             <div class="buttons has-addons">
-                <button class="button" ng-click="saveDate()">Save the Date</button>
+                <button class="button infoSave" ng-click="saveDate()">Save the Date</button>
             </div>
         </div>
     </div>
@@ -18,6 +29,8 @@
         <h2 class="infoName">{{date.name}}</h2>
         <label class="infoHead">Description</label>
         <p class="infoDetails">{{date.description}}</p>
+        <label class="infoHead">Rating:</label>
+        <p class="infoDetails">{{date.rating}}</p>
         <label class="infoHead">Tags</label>
         <p class="infoDeatails">{{date.tags}}</p>
         <label class="infoHead">Address</label>
@@ -50,55 +63,42 @@
     </div>
 </div>
 
-<!-- <div class="field">
-            <label class="label">Subject</label>
-            <div class="control">
-                <div class="select">
-                    <select>
-                        <option>Select dropdown</option>
-                        <option>With options</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        
-        <div class="field">
-            <label class="label">Message</label>
-            <div class="control">
-                <textarea class="textarea" placeholder="Textarea"></textarea>
-            </div>
-        </div>
-        
-        <div class="field">
-            <div class="control">
-                <label class="checkbox">
-                    <input type="checkbox"> I agree to the
-                    <a href="#">terms and conditions</a>
-                </label>
-            </div>
-        </div>
-        
-        <div class="field">
-            <div class="control">
-                <label class="radio">
-                    <input type="radio" name="question"> Yes
-                </label>
-                <label class="radio">
-                    <input type="radio" name="question"> No
-                </label>
-            </div>
-        </div>
-        
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link">Submit</button>
-            </div>
-            <div class="control">
-                <button class="button is-text">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div> -->
 <div class="comments">
     <dir-disqus config="disqusConfig"></dir-disqus>
+</div>
+
+<div>
+    <div class="modal" id="saveBtn">
+        <div class="modal-background" ng-click="toggleSaveModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head modalHead">
+                <p class="modal-card-title modalP">Save Successful!</p>
+                <button class="delete" aria-label="close" ng-click="toggleSaveModal()"></button>
+            </header>
+            <section class="modal-card-body modalColor">
+                <p class="modalP">You just saved {{savedName}} as a date! </p>
+            </section>
+            <footer class="modal-card-foot modalColor">
+                <button class="button modalCont" ng-click="toggleSaveModal()">Back to Date Info</button>
+                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
+            </footer>
+        </div>
+    </div>
+    <!-- already saved button modal -->
+    <div class="modal" id="alreadySaveBtn">
+        <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head modalHead">
+                <p class="modal-card-title modalP">Already Saved!</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body modalColor">
+                <p class="modalP">You already saved this date, Tiger!</p>
+            </section>
+            <footer class="modal-card-foot modalColor">
+                <button class="button is-success modalCont" ng-click="toggleAlreadySaveModal()">Back to Date Info</button>
+                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
+            </footer>
+        </div>
+    </div>
 </div>

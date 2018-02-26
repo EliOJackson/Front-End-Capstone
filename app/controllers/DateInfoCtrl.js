@@ -20,6 +20,13 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
         }
     });
 
+    $scope.toggleSaveModal = () => {
+        document.querySelector("#saveBtn").classList.toggle("is-active");
+    };
+    $scope.toggleAlreadySaveModal = () => {
+        document.querySelector("#alreadySaveBtn").classList.toggle("is-active");
+    };
+
     DateFactory.getOneDate($scope.dateId.dateId)
     .then(data => {
         $scope.dates = [];
@@ -44,12 +51,13 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
                     }
                 });
                 if (saveArray[0] !== undefined) {     // if a duplicate date has been pushed to this array, will run alert
-                    $window.alert("You've already saved this date you Dingus!");
+                    $scope.toggleAlreadySaveModal();
+                
                 }
                 else {                                  // if no date has been pushed, save function is ran.
                     DateFactory.save(saveObj);
-                    $window.alert(`You just saved ${this.date.name} as a date!`);
-                }
+                    $scope.savedName = this.date.name;
+                    $scope.toggleSaveModal();                }
             });
     };
 
