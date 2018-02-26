@@ -37,7 +37,29 @@ body {
   display: flex;
   flex-direction: column;
 }
+.infoCard {
+  background-color: #d3d7ff;
+  border: #d3d7ff solid 0em; 
+  border-radius: 1em;
+  color: white;
+  padding: 2%;
+  margin-top: 1em;
+  // margin-left: 13em;
+  // margin-right: -9em;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
+.infoName {
+  font-size: 5em;
+}
+
+.infoHead {
+  font-size: 2em;
+  font-weight: 700;
+}
 .card:hover, .card:focus {
   box-shadow: -5px 10px 5px rgba(189, 116, 173, 1);
 }
@@ -58,7 +80,7 @@ nav {
     color: white !important;
     position: absolute;
     right: 8%;
-    bottom: 24.4%;
+    bottom: 31.2%;
 
 }
 
