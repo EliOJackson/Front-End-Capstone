@@ -1,33 +1,37 @@
-
-
 <div class="columns" ng-repeat="date in dates | filter: search.term">
     <div class="infoCard column is-one-third">
-        <div class="box imgBox">
+        <div class="imgBox">
             <div>
-                <img ng-src="{{date.url}}" alt="" />
+                <figure class="image is-1by1">
+                    <img class="imgList" ng-src="{{date.url}}" alt="Placeholder image">
+                </figure>
             </div>
             <h4>{{date.description}}</h4>
             <h4>Avg Rating: {{date.rating}}</h4>
-                <div class="buttons has-addons">
-                    <button class="button" ng-click="saveDate()">Save the Date</button>
-                </div>
+            <div class="buttons has-addons">
+                <button class="button" ng-click="saveDate()">Save the Date</button>
+            </div>
         </div>
     </div>
-    <div class ="column">
-        
+    <div class="column">
+
         <h2 class="infoName">{{date.name}}</h2>
-            <label class="infoHead">Description</label>
-            <p>{{date.description}}</p>
-            <label class="label">Tags</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
+        <label class="infoHead">Description</label>
+        <p class="infoDetails">{{date.description}}</p>
+        <label class="infoHead">Tags</label>
+        <p class="infoDeatails">{{date.tags}}</p>
+        <label class="infoHead">Address</label>
+        <p class="infoDeatails">{{date.location}}</p>
+        <label class="infoHead">Phone</label>
+        <p class="infoDeatails">{{date.phone}}</p>
+        <label class="infoHead">Website</label>
+        <p class="infoDeatails">{{date.website}}</p>
+
+        <!-- </span>
                 <span class="icon is-small is-right">
                     <i class="fas fa-check"></i>
                 </span>
-            </div>
+            
             <p class="help is-success">This username is available</p>
     
         
@@ -42,10 +46,11 @@
                     <i class="fas fa-exclamation-triangle"></i>
                 </span>
             </div>
-            <p class="help is-danger">This email is invalid</p>
-        </div>
-        
-        <div class="field">
+            <p class="help is-danger">This email is invalid</p> -->
+    </div>
+</div>
+
+<!-- <div class="field">
             <label class="label">Subject</label>
             <div class="control">
                 <div class="select">
@@ -93,7 +98,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <div class="comments">
     <dir-disqus config="disqusConfig"></dir-disqus>
 </div>
