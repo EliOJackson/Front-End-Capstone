@@ -1,101 +1,137 @@
 
-
-<div class="level">
-    <div class="level-item">
-        <div class="box add-content-form">
-            <div class="field">
-                <div class="control">
-                    <label class="radio">
-                        <input type="radio" name="answer" ng-click="googleRadio()"> Google Search
-                    </label>
-                    <label class="radio">
-                        <input type="radio" name="answer" ng-click="userRadio()"> User Upload
-                    </label>
+<div class="columns is multiline">
+    <div class="level column">
+        <div class="level-item">
+            <div class="box add-content-form">
+                <div class="field">
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="answer" ng-click="googleRadio()"> Google Search
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer" ng-click="userRadio()"> User Upload
+                        </label>
+                    </div>
+                    <div ng-show = "google">
+                        <div class ="field">
+                            <label class="label">Google Search</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Date Name" ng-model="searchInput" ng-keyup="keySearch($event)">
+                            </div>
+                        </div>
+                            <div class="control">
+                                <button class="button saveBtn" ng-click="getSearch()">Search It Google</button>
+                            </div>
+                            <div ng-show="googleSelected">
+                                <div class="field">
+                                    <label class="label">{{inputOne}}</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">{{inputThree}}</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Address" ng-model="date.location">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Phone Number</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Phone" ng-model="date.phone">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Web Site</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Website" ng-model="date.website">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">{{inputFour}}</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">{{inputTwo}} (Optional)</label>
+                                    <div class="control">
+                                        <textarea class="textarea" placeholder="Your Description Here" ng-model="date.description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control">
+                                    <button class="button saveBtn" ng-click="saveItem()">{{buttonName}}</button>
+                                </div>
+                            </div>
+                    </div>
                 </div>
-                <div ng-show = "google">
-                    <div class ="field">
-                        <label class="label">Google Search</label>
+                <div ng-show = "userAdd">
+                    <div class="field">
+                            <label class="label">{{inputOne}}</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Date Name" ng-model="searchInput" ng-keyup="keySearch($event)">
+                            <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
                         </div>
                     </div>
+                    <div class="field">
+                        <label class="label">{{inputThree}}</label>
                         <div class="control">
-                            <button class="button saveBtn" ng-click="getSearch()">Search It Google</button>
+                            <input class="input" type="text" placeholder="Address" ng-model="date.location">
                         </div>
-                </div>
-            </div>
-            <div ng-show = "userAdd">
-                <div class="field">
-                        <label class="label">{{inputOne}}</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">{{inputThree}}</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Address" ng-model="date.location">
+                    <div class="field">
+                        <label class="label">Phone Number</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Phone" ng-model="date.phone">
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">Phone Number</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Phone" ng-model="date.phone">
+                    <div class="field">
+                        <label class="label">Web Site</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Website" ng-model="date.website">
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">Web Site</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Website" ng-model="date.website">
+                    <div class="field">
+                        <label class="label">{{inputFour}}</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">{{inputFour}}</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                    <div class="field">
+                        <label class="label">{{inputTwo}} (Optional)</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Your Description Here" ng-model="date.description"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="field">
-                    <label class="label">{{inputTwo}} (Optional)</label>
                     <div class="control">
-                        <textarea class="textarea" placeholder="Your Description Here" ng-model="date.description"></textarea>
+                        <button class="button saveBtn" ng-click="saveItem()">{{buttonName}}</button>
                     </div>
-                </div>
-                <div class="control">
-                    <button class="button saveBtn" ng-click="saveItem()">{{buttonName}}</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- 
-    <div ng-show="searched" >{{place.name}}</div>
-    <div ng-show="searched">{{place.formatted_address}}</div>
-    <div ng-show="searched">{{place.formatted_phone_number}}</div>
-    <img ng-src="{{place.image}}">
-</div> -->
 
-<div ng-show="searched" ng-repeat="place in places">
-    <div class="columns is-multiline">
-        <div class="column is-one-third">
-            <div class="box">
-                <!-- <a ng-if="user" class="noBlue" href="#!/dates/{{date.dateId}}"> -->
-                    <article class="tile is-child">
-                    <h2 class="title">{{place.name}}</h2>
-                    <img ng-src="{{place.image}}">
-                    <h4>{{place.formatted_address}}</h4>
-                    <h4>{{place.formatted_phone_number}}</h4>
-                    <h4>{{place.website}}</h4>
-                    <button class="button is-info right" ng-click="addToForm()">Create this Date</button>
-                <!-- </a> -->
-                </article>
-                <br>
-                <!-- <div class="buttons has-addons"> -->
-                <!-- </div> -->
-            </div>
+    <div class="columns is-multiline" >
+        <div class="card userCard column is-one-quarter" ng-repeat="place in places">
+            <ul class="card-content">
+                    <li class="card-image">
+                        <figure class="image is-1by1">
+                            <img class="imgList" src="{{place.image}}" alt="Placeholder image">
+                        </figure>
+                    </li>
+                    <ul class="media block">
+                        <p class="title is-3">{{place.name}}</p>
+                        <li class="subtitle is-6">{{place.formatted_address}}</li>
+                        <li class="subtitle is-6">{{place.formatted_phone_number}}</li>
+                        <li class="subtitle is-6">{{place.website}}</li>
+                        <li>
+                            <button class="button saveBtn right" ng-click="addToForm()">Create this Date</button>
+                        </li>
+                    </ul>
+            </ul>
         </div>
     </div>
-</div>
+
 
 <div class="modal" id="createDate">
     <div class="modal-background" ng-click="toggleCreateDate()"></div>

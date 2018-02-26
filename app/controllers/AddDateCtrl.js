@@ -48,6 +48,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     };
 
     $scope.getSearch = () => {
+        $scope.googleSelected = false;
         let searchString = $scope.searchInput;
         console.log(searchString);
         GoogleFactory.search(searchString)
@@ -68,6 +69,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     };
     $scope.keySearch = (event) => {
         if (event.keyCode === 13 && $scope.searchInput !== undefined) {
+        $scope.googleSelected = false;            
         let searchString = $scope.searchInput;
         console.log(searchString);
         GoogleFactory.search(searchString)
@@ -85,6 +87,8 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     };
 
     $scope.addToForm = function() {
+        $scope.googleSelected = true;
+        console.log('$scope.googleSelected',$scope.googleSelected);
         $window.scrollTo(0,0);
         $scope.date = {
             name: this.place.name,

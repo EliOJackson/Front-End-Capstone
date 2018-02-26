@@ -12,44 +12,6 @@
 </section>
 
 <div class="columns" ng-repeat="date in dates | filter: search.term">
-    <!-- <div class="infoCard column is-one-third">
-        <div class="imgBox">
-            <div>
-                <figure class="image is-1by1">
-                    <img class="imgList" ng-src="{{date.url}}" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="infoRating button">Rate:</div>
-            <div class="buttons has-addons">
-                <a class="button is-small is-right rateBtn r1Info" ng-click="rate(1)">
-                    <span class="icon is-small">
-                        1
-                    </span>
-                </a>
-                <a class="button is-small is-right rateBtn r2Info" ng-click="rate(2)">
-                    <span class="icon is-small">
-                        2
-                    </span>
-                </a>
-                <a class="button is-small is-right rateBtn r3Info" ng-click="rate(3)">
-                    <span class="icon is-small">
-                        3
-                    </span>
-                </a>
-                <a class="button is-small is-right rateBtn r4Info" ng-click="rate(4)">
-                    <span class="icon is-small">
-                        4
-                    </span>
-                </a>
-                <a class="button is-small is-right rateBtn r5Info" ng-click="rate(5)">
-                    <span class="icon is-small ">
-                        5
-                    </span>
-                </a>
-                <button class="button infoSave" ng-click="saveDate()">Save the Date</button>
-            </div>
-        </div>
-    </div> -->
     <ul class="infoCard column is-one-third" ng-repeat="date in dates | filter: search.term">
         <a class="noBlue" href="#!/dates/{{date.dateId}}">
             <li class="card-image">
