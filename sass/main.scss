@@ -5,6 +5,31 @@ body {
   flex-direction: column;
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+
+.footer {
+  background-color: #d3d7ff;
+  padding: 1em;
+  padding-bottom: 5em;
+}
+.tagAdd {
+  font-size: 20.5px !important;
+}
+
+.radio {
+  font-size: 1.5rem;
+    padding-bottom: 1em;
+    font-weight: 600;
+}
+.marginOr {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.left {
+    float: left;
+    justify-content: left;
+    margin-left: -77%;
+    margin-bottom: -5%;
+}
 // }
 // #mainContent {
 //   width: 90%;

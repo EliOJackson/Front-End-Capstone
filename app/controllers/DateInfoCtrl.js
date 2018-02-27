@@ -10,6 +10,8 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
         disqus_url: `http://127.0.0.1:8080/#!/dates/${$routeParams.dateId}`
     };
 
+    
+
 
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
@@ -115,6 +117,34 @@ angular.module("Datr").controller("DateInfoCtrl", function ($scope, DateFactory,
     };
     $scope.togglePatchRate = () => {
         document.querySelector("#patchRate").classList.toggle("is-active");
+    };
+
+    $scope.startTagUpdate = () => {
+        console.log('test click');
+        $scope.addTag = true;
+    };
+
+    $scope.updateTags = () => {
+        $scope.addTag = false;
+        let patchObj = { 
+            tags: $scope.dates[0].tags
+        };
+        console.log('patchObj', patchObj);
+        DateFactory.patchTags(patchObj, $routeParams.dateId);
+    };
+
+    $scope.startDescriptionUpdate = () => {
+        console.log('test click');
+        $scope.addDescription = true;
+    };
+
+    $scope.updateDescription = () => {
+        $scope.addDescription = false;
+        let patchObj = { 
+            description: $scope.dates[0].description
+        };
+        console.log('patchObj', patchObj);
+        DateFactory.patchDescription(patchObj, $routeParams.dateId);
     };
 
 });

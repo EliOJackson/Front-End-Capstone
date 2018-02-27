@@ -11,6 +11,16 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
    $scope.searchInput = "";
    $scope.places = [];
 
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            $scope.$apply($scope.user = true);
+            $scope.uid = firebase.auth().currentUser.uid;
+
+        } else {
+            $scope.$apply($scope.user = false);
+        }
+    });
+
     $scope.date = {
         name: '',
         description: '',
@@ -20,7 +30,7 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
 
     $scope.reload = () => {
         $route.reload();
-    }
+    };
 
     $scope.googleRadio = () => {
         $scope.userAdd = false;
@@ -37,10 +47,17 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
 
 
     $scope.saveItem = () => {
+        if ($scope.date.name !== "" && $scope.date.location !== ""){
         DateFactory.addDate($scope.date, "dates")
             .then((data) => {
+                console.log('data Date data',data.data.name);
+                let saveObj ={
+                    dateId: data.data.name,
+                    uid: $scope.uid
+                };
+                DateFactory.save(saveObj);
                 $scope.createdName = $scope.date.name;
-            $scope.toggleCreateDate();
+                $scope.toggleCreateDate();
                 $scope.date = {
                     name: '',
                     description: '',
@@ -49,6 +66,10 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
                 };
 
             });
+        }
+        else {
+            $scope.toggleRequiredInfo();
+        }
     };
 
     $scope.getSearch = () => {
@@ -89,18 +110,22 @@ angular.module("Datr").controller("AddDateCtrl", function ($scope, DateFactory, 
     $scope.toggleCreateDate = () => {
         document.querySelector("#createDate").classList.toggle("is-active");
     };
+    $scope.toggleRequiredInfo = () => {
+        document.querySelector("#requiredInfo").classList.toggle("is-active");
+    };
 
     $scope.addToForm = function() {
         $scope.googleSelected = true;
         console.log('$scope.googleSelected',$scope.googleSelected);
-        $window.scrollTo(0,0);
+        $window.scrollTo(500,500);
         $scope.date = {
             name: this.place.name,
             description: '',
             location: this.place.formatted_address,
             phone: this.place.formatted_phone_number,
             url: this.place.image,
-            website: this.place.website
+            website: this.place.website,
+            tags: ''
         };
     };
 

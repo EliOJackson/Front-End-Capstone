@@ -125,7 +125,7 @@
                 <p class="modal-card-title modalP">Save Successful!</p>
                 <button class="delete" aria-label="close" ng-click="toggleSaveModal()"></button>
             </header>
-            <section ng-repeat "date in dates" class="modal-card-body modalColor">
+            <section class="modal-card-body modalColor">
                 <p class="modalP">You just saved {{savedName}} as a date! </p>
             </section>
             <footer class="modal-card-foot modalColor">
@@ -162,7 +162,7 @@
             <p class="modal-card-title modalP">New Rating!</p>
             <button class="delete" aria-label="close" ng-click="toggleNewRate()"></button>
         </header>
-        <section ng-repeat "date in dates" class="modal-card-body modalColor">
+        <section class="modal-card-body modalColor">
             <p class="modalP">You just rated {{ratingName}} a {{newRating}} out of 5!</p>
         </section>
         <footer class="modal-card-foot modalColor">

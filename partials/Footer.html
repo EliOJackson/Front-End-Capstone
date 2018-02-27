@@ -1,28 +1,10 @@
-<footer class="footer" ng-controller="NavCtrl">
+<nav class="level footer" ng-controller="FooterCtrl">
     <div>
         <h1 class="logo">Datr</h1>
     </div>
-
-    <input class="input" type="text" placeholder="Search..." ng-model="search.term">
-    <div ng-if="user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-href="#!/dates">Dates</a>
+    
+    <div class="left">&copy; Tucker Jackson</div>
+    <div class="navLinkBox">
+        <a class="navBtn nav-link" ng-click="top()">Back to Top</a>
     </div>
-    <div ng-if="user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-href="#!/add">Add Dates</a>
-    </div>
-    <div ng-if="user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-href="#!/user/{{uid}}">My Dates</a>
-    </div>
-    <!-- <div ng-if="user" class="navLinkBox">
-            <a class="button navBtn is-info nav-link" href="#!/user/1">Userinfo</a>
-        </div> -->
-    <div ng-if="user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-click="logout()">Logout</a>
-    </div>
-    <div ng-if="!user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-href="#!/dates">Dates</a>
-    </div>
-    <div ng-if="!user" class="navLinkBox">
-        <a class="navBtn nav-link" ng-click="login()">Login</a>
-    </div>
-</footer>
+</nav>

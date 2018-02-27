@@ -20,6 +20,7 @@
                         <label class="radio">
                             <input type="radio" name="answer" ng-click="googleRadio()"> Google Search
                         </label>
+                        <p class="inline marginOr">  or  </p> 
                         <label class="radio">
                             <input type="radio" name="answer" ng-click="userRadio()"> User Upload
                         </label>
@@ -36,15 +37,15 @@
                             </div>
                             <div ng-show="googleSelected">
                                 <div class="field">
-                                    <label class="label">{{inputOne}}</label>
+                                    <label class="label">{{inputOne}} (Required)</label>
                                     <div class="control">
-                                        <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
+                                        <input class="input" type="text" placeholder="Date Name (required)" ng-model="date.name">
                                     </div>
                                 </div>
                                 <div class="field">
-                                    <label class="label">{{inputThree}}</label>
+                                    <label class="label">{{inputThree}} (Required)</label>
                                     <div class="control">
-                                        <input class="input" type="text" placeholder="Address" ng-model="date.location">
+                                        <input class="input" type="text" placeholder="Address (required)" ng-model="date.location">
                                     </div>
                                 </div>
                                 <div class="field">
@@ -66,6 +67,12 @@
                                     </div>
                                 </div>
                                 <div class="field">
+                                    <label class="label">Date Tags (Optional)</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="Add Tags" ng-model="date.tags">
+                                    </div>
+                                </div>
+                                <div class="field">
                                     <label class="label">{{inputTwo}} (Optional)</label>
                                     <div class="control">
                                         <textarea class="textarea" placeholder="Your Description Here" ng-model="date.description"></textarea>
@@ -79,15 +86,15 @@
                 </div>
                 <div ng-show = "userAdd">
                     <div class="field">
-                            <label class="label">{{inputOne}}</label>
+                            <label class="label">{{inputOne}} (Required)</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Date Name" ng-model="date.name">
+                            <input class="input" type="text" placeholder="Date Name (required) " ng-model="date.name">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">{{inputThree}}</label>
+                        <label class="label">{{inputThree}} (Required)</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Address" ng-model="date.location">
+                            <input class="input" type="text" placeholder="Address (required)" ng-model="date.location">
                         </div>
                     </div>
                     <div class="field">
@@ -102,10 +109,16 @@
                             <input class="input" type="text" placeholder="Website" ng-model="date.website">
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field"> 
                         <label class="label">{{inputFour}}</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Img Link" ng-model="date.url">
+                        </div>
+                    </div>
+                    <div class="field"> 
+                        <label class="label">Date Tags (Optional)<label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Add Tags" ng-model="date.tags">
                         </div>
                     </div>
                     <div class="field">
@@ -154,6 +167,22 @@
         </header>
         <section class="modal-card-body modalColor">
             <p class="modalP">You just added {{createdName}} to Datr! Thanks for your contribution! </p>
+        </section>
+        <footer class="modal-card-foot modalColor">
+            <button class="button is-success modalCont" ng-click="reload()">Create more Dates</button>
+            <a class="button modalCont" ng-href="#!/dates">View All Dates</a>
+        </footer>
+    </div>
+</div>
+<div class="modal" id="requiredInfo">
+    <div class="modal-background" ng-click="toggleRequiredInfo()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">Unable To Create Date</p>
+            <button class="delete" aria-label="close" ng-click="toggleRequiredInfo()"></button>
+        </header>
+        <section class="modal-card-body modalColor">
+            <p class="modalP">Be sure you have included a Date Name and Location! </p>
         </section>
         <footer class="modal-card-foot modalColor">
             <button class="button is-success modalCont" ng-click="reload()">Create more Dates</button>

@@ -99,10 +99,35 @@ angular.module("Datr").factory("DateFactory", function (FBUrl, $q, $http) {
         });
     }
 
-    function getDateComments(uid, dateKey) {
-
-        //internal function like date rating. Will need to pass both UID and DateKey to get User Name and Date it applies to
+    function patchTags(obj, dateId) {
+        return $q((resolve, reject) => {
+            $http
+                .patch(`${FBUrl}/dates/${dateId}.json`, JSON.stringify(obj))
+                .then(data => {
+                    console.log("UpdatedR Tags!", data);
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    reject(error);
+                });
+        });
     }
 
-    return { getAllDates, addDate, getSavedDates, getDateComments, save, datesToPrint, getOneDate, deleteSaved };
+    function patchDescription(obj, dateId) {
+        return $q((resolve, reject) => {
+            $http
+                .patch(`${FBUrl}/dates/${dateId}.json`, JSON.stringify(obj))
+                .then(data => {
+                    console.log("UpdatedR Description!", data);
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.log(error);
+                    reject(error);
+                });
+        });
+    }
+
+    return { getAllDates, addDate, getSavedDates, patchTags, patchDescription, save, datesToPrint, getOneDate, deleteSaved };
 });   
