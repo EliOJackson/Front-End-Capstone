@@ -71,17 +71,21 @@ angular.module("Datr").controller("UserDatesCtrl", function ($scope, DateFactory
                             console.log("obj.rating", obj.rating);
                             $scope.updateRating = obj.rating;
                             $scope.togglePatchRate();
-                            load();
+                            RatingFactory.rateDates($scope.dates);
+                            
                         });
                 }
                 else {                              // if no rating object exists for user, posts new rating.
                     RatingFactory.newRate(obj)
                         .then(() => {
-                            $scope.ratingName = this.$parent.date.name;
+                            $scope.ratingName = this.date.name;
+                            console.log('this',this);
                             $scope.newRating = obj.rating;
                             console.log('$scope.ratingName', $scope.ratingName);
                             $scope.toggleNewRate();
-                            load();
+                            RatingFactory.rateDates($scope.dates);
+                            
+        
                         });
                 }
             });
