@@ -40,7 +40,7 @@ angular.module("Datr").factory("GoogleFactory", function (GoogleCreds, $http, $q
             searchedPlace.image = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${imageRef}&key=${GoogleCreds.apiKey}`;
         }
         else {
-            searchedPlace.image = `http://www.pixedelic.com/themes/geode/demo/wp-content/uploads/sites/4/2014/04/placeholder4.png`;
+            searchedPlace.image = "../../img/placeholder4.png";
         }
     }
 
