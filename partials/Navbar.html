@@ -1,26 +1,26 @@
 <nav class="level" ng-controller="NavCtrl">
-        <div>
-            <a ng-href="#!/dates" class="navBtn">
-                <h1 class="logo">Datr</h1>
-            </a>
-        </div>
-            
+    <div>
+        <a ng-href="#!/dates" class="navBtn">
+            <h1 class="logo">Datr</h1>
+        </a>
+    </div>
+
     <input class="input" type="text" placeholder="Search..." ng-model="search.term">
-        <div ng-if="user" class="navLinkBox">
-            <a class="navBtn nav-link" ng-href="#!/dates">Dates</a>
-        </div>
-        <div ng-if="user" class="navLinkBox">
-            <a class="navBtn nav-link" ng-href="#!/add">Add Dates</a>
-        </div>
-        <div ng-if="user" class="navLinkBox">
-            <a class="navBtn nav-link" ng-href="#!/user/{{uid}}">My Dates</a>
-        </div>
-        <!-- <div ng-if="user" class="navLinkBox">
+    <div ng-if="user" class="navLinkBox">
+        <a class="navBtn nav-link" ng-href="#!/dates">Dates</a>
+    </div>
+    <div ng-if="user" class="navLinkBox">
+        <a class="navBtn nav-link" ng-href="#!/add">Add Dates</a>
+    </div>
+    <div ng-if="user" class="navLinkBox">
+        <a class="navBtn nav-link" ng-href="#!/user/{{uid}}">My Dates</a>
+    </div>
+    <!-- <div ng-if="user" class="navLinkBox">
             <a class="button navBtn is-info nav-link" href="#!/user/1">Userinfo</a>
         </div> -->
-        <div ng-if="user" class="navLinkBox">
-            <a class="navBtn nav-link" ng-click="logout()">Logout</a>
-        </div>
+    <div ng-if="user" class="navLinkBox">
+        <a class="navBtn nav-link" ng-click="logout()">Logout</a>
+    </div>
     <div ng-if="!user" class="navLinkBox">
         <a class="navBtn nav-link" ng-href="#!/dates">Dates</a>
     </div>

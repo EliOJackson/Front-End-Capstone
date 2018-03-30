@@ -1,6 +1,9 @@
 
 module.exports = function (grunt) {
 
+    grunt.loadNpmTasks('grunt-contrib-clean');
+
+
     grunt.initConfig({
         jshint: {
             options: {
@@ -26,6 +29,10 @@ module.exports = function (grunt) {
             sass: {
                 files: ['./sass/**/*.scss'],
                 tasks: ['sass']
+            },
+            clean: {
+                options: { force: true },
+                public: ['../public']
             }
         }
     });
@@ -33,4 +40,5 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     grunt.registerTask('default', ['jshint', 'sass', 'watch']);
+    grunt.registerTask('cleanit', ['clean']);
 };

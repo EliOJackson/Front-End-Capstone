@@ -9,7 +9,6 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
         if (user) {
             $scope.$apply($scope.user = true);
             $scope.uid = firebase.auth().currentUser.uid;
-
         } else {
             $scope.$apply($scope.user = false);
         }
@@ -48,10 +47,8 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                 });
                 if (saveArray[0] !== undefined) {     // if a duplicate date has been pushed to this array, will run alert
                     $scope.toggleAlreadySaveModal();
-                }
-                else {                                  // if no date has been pushed, save function is ran.
+                } else {                                  // if no date has been pushed, save function is ran.
                     DateFactory.save(saveObj);
-                    console.log("this", this);
                     $scope.savedName = this.date.name;
                     $scope.toggleSaveModal();
                 }
@@ -76,22 +73,18 @@ angular.module("Datr").controller("DateListCtrl", function ($scope, DateFactory,
                     }
                 });
                 if (rateArray.length > 0) {       // if array has an object, the patch function wil run, updating the users rating
-
                     let ratingToUpdate = rateArray[0][0];
                     RatingFactory.patchRate(obj, ratingToUpdate)
                         .then(() => {
-                            console.log("obj.rating", obj.rating);
                             $scope.updateRating = obj.rating;
                             $scope.togglePatchRate();
                             load();
                         });
-                }
-                else {                              // if no rating object exists for user, posts new rating.
+                } else {                              // if no rating object exists for user, posts new rating.
                     RatingFactory.newRate(obj)
                         .then(() => {
                             $scope.ratingName = this.$parent.date.name;
                             $scope.newRating = obj.rating;
-                            console.log('$scope.ratingName',$scope.ratingName);
                             $scope.toggleNewRate();
                             load();
                         });

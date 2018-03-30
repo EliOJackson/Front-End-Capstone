@@ -26,7 +26,7 @@
                     <li class="tag rating">Avg Rating: {{date.rating}} </li>
                 </ul>
         </a>
-    
+
         <ul class="content inline">
             <ul ng-if="user" class="buttons has-addons inline">
                 <li>
@@ -49,7 +49,7 @@
                         <span class="icon is-small">
                             4
                         </span>
-                    </a>                     
+                    </a>
                     <a class="button is-small is-right rateBtn r5" ng-click="rate(5)">
                         <span class="icon is-small ">
                             5
@@ -118,39 +118,39 @@
 
 <!-- save button modal -->
 
-    <div class="modal" id="saveBtn">
-        <div class="modal-background" ng-click="toggleSaveModal()"></div>
-        <div class="modal-card">
-            <header class="modal-card-head modalHead">
-                <p class="modal-card-title modalP">Save Successful!</p>
-                <button class="delete" aria-label="close" ng-click="toggleSaveModal()"></button>
-            </header>
-            <section class="modal-card-body modalColor">
-                <p class="modalP">You just saved {{savedName}} as a date! </p>
-            </section>
-            <footer class="modal-card-foot modalColor">
-                <button class="button modalCont" ng-click="toggleSaveModal()">Continue Browsing</button>
-                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
-            </footer>
-        </div>
+<div class="modal" id="saveBtn">
+    <div class="modal-background" ng-click="toggleSaveModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">Save Successful!</p>
+            <button class="delete" aria-label="close" ng-click="toggleSaveModal()"></button>
+        </header>
+        <section class="modal-card-body modalColor">
+            <p class="modalP">You just saved {{savedName}} as a date! </p>
+        </section>
+        <footer class="modal-card-foot modalColor">
+            <button class="button modalCont" ng-click="toggleSaveModal()">Continue Browsing</button>
+            <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
+        </footer>
     </div>
-    <!-- already saved button modal -->
-    <div class="modal" id="alreadySaveBtn">
-        <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
-        <div class="modal-card">
-            <header class="modal-card-head modalHead">
-                <p class="modal-card-title modalP">Already Saved!</p>
-                <button class="delete" aria-label="close" ng-click="toggleAlreadySaveModal()"></button>
-            </header>
-            <section class="modal-card-body modalColor">
-                <p class="modalP">You already saved this date, Tiger!</p>
-            </section>
-            <footer class="modal-card-foot modalColor">
-                <button class="button is-success modalCont" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
-                <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
-            </footer>
-        </div>
+</div>
+<!-- already saved button modal -->
+<div class="modal" id="alreadySaveBtn">
+    <div class="modal-background" ng-click="toggleAlreadySaveModal()"></div>
+    <div class="modal-card">
+        <header class="modal-card-head modalHead">
+            <p class="modal-card-title modalP">Already Saved!</p>
+            <button class="delete" aria-label="close" ng-click="toggleAlreadySaveModal()"></button>
+        </header>
+        <section class="modal-card-body modalColor">
+            <p class="modalP">You already saved this date, Tiger!</p>
+        </section>
+        <footer class="modal-card-foot modalColor">
+            <button class="button is-success modalCont" ng-click="toggleAlreadySaveModal()">Continue Browsing</button>
+            <a class="button modalCont" ng-href="#!/user/{{uid}}">My Dates</a>
+        </footer>
     </div>
+</div>
 
 <!-- already saved button modal -->
 

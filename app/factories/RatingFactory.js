@@ -3,7 +3,6 @@
 angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
 
     function rateDates(dates) {
-        console.log('dates',dates);
         return $q((resolve, reject) => {
             let allDates = dates;
             let promiseArray = []; // setting a promise array to push all of my calls to FB for Ratings
@@ -11,7 +10,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
                 let dateId = date.dateId;
                 let ratings = getDateRating(dateId);
                 promiseArray.push(ratings); //pushing all of the dates from get date rating in to the array
-
             });
             return $q.all(promiseArray) // promise all on the array of the rating promises
                 .then((dates) => {
@@ -28,7 +26,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
                     });
                     resolve(dates);
                 });
-
         });
     }
     //internal function called on line 25
@@ -40,7 +37,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
     //internal function called on line 26
     function dateLoop(rating, dates, allDates) {
         let datesArrays = Object.entries(dates);
-        console.log(allDates, "datesArrays");
         datesArrays.forEach(dateArray => {
             let dateId = dateArray[1].dateId;
             allDates.forEach(date => {
@@ -59,7 +55,6 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
                     resolve(data);
                 })
                 .catch(error => {
-                    console.log("getDate rating", error);
                 });
         });
     }
@@ -68,11 +63,9 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
             $http
                 .post(`${FBUrl}/rating.json`, JSON.stringify(obj))
                 .then(data => {
-                    console.log("New Rating!");
                     resolve(data);
                 })
                 .catch(error => {
-                    console.log(error);
                     reject(error);
                 });
         });
@@ -82,16 +75,13 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
             $http
                 .patch(`${FBUrl}/rating/${ratingKey}.json`, JSON.stringify(obj))
                 .then(data => {
-                    console.log("UpdatedRating!");
                     resolve(data);
                 })
                 .catch(error => {
-                    console.log(error);
                     reject(error);
                 });
         });
     }
 
     return { rateDates, average, dateLoop, getDateRating, newRate, patchRate };
-
 });

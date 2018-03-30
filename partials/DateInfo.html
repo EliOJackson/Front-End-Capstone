@@ -26,7 +26,7 @@
                     <li class="tag rating">Avg Rating: {{date.rating}} </li>
                 </ul>
         </a>
-    
+
         <ul class="content inline">
             <ul ng-if="user" class="buttons has-addons inline">
                 <li>
@@ -62,10 +62,10 @@
     </ul>
     <div class="column">
         <h2 class="infoName">{{date.name}}</h2>
-        <label class="infoHead" ng-click="startDescriptionUpdate()">Description
-            (<i class="fas fa-plus tagAdd"></i> Click to update)
+        <label class="infoHead" ng-click="startDescriptionUpdate()">Description (
+            <i class="fas fa-plus tagAdd"></i> Click to update)
         </label>
-        <p class="infoDetails" ng-show = "!addDescription">{{date.description}}</p>
+        <p class="infoDetails" ng-show="!addDescription">{{date.description}}</p>
         <div class="field" ng-show="addDescription">
             <label class="label"></label>
             <div class="control">
@@ -77,11 +77,11 @@
         </div>
         <label class="infoHead">Rating:</label>
         <p class="infoDetails">{{date.rating}}</p>
-        <label class="infoHead" ng-click="startTagUpdate()">Tags 
-            (<i class="fas fa-plus tagAdd" ></i> Click to update)
+        <label class="infoHead" ng-click="startTagUpdate()">Tags (
+            <i class="fas fa-plus tagAdd"></i> Click to update)
         </label>
-        <p class="infoDeatails" ng-show = "!addTag">{{date.tags}}</p>
-        <div class="field" ng-show = "addTag">
+        <p class="infoDeatails" ng-show="!addTag">{{date.tags}}</p>
+        <div class="field" ng-show="addTag">
             <label class="label"></label>
             <div class="control">
                 <textarea class="textarea" placeholder="Add Tags Here" ng-model="date.tags"></textarea>
@@ -96,7 +96,7 @@
         <p class="infoDeatails">{{date.phone}}</p>
         <label class="infoHead">Website</label>
         <p class="infoDeatails">{{date.website}}</p>
-        
+
     </div>
 </div>
 
@@ -144,7 +144,7 @@
         <div class="modal-card">
             <header class="modal-card-head modalHead">
                 <p class="modal-card-title modalP">New Rating!</p>
-                <button class="delete" aria-label="close"  ng-click="toggleNewRate()"></button>
+                <button class="delete" aria-label="close" ng-click="toggleNewRate()"></button>
             </header>
             <section class="modal-card-body modalColor">
                 <p class="modalP">You just rated {{ratingName}} a {{newRating}} out of 5!</p>
