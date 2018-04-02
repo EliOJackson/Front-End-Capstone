@@ -5,22 +5,22 @@ angular.module("Datr").factory("RatingFactory", function (FBUrl, $q, $http) {
     function rateDates(dates) {
         return $q((resolve, reject) => {
             let allDates = dates;
-            let promiseArray = []; // setting a promise array to push all of my calls to FB for Ratings
+            let promiseArray = []; //setting a promise array to push all of my calls to FB for Ratings
             dates.forEach(date => {
                 let dateId = date.dateId;
                 let ratings = getDateRating(dateId);
                 promiseArray.push(ratings); //pushing all of the dates from get date rating in to the array
             });
-            return $q.all(promiseArray) // promise all on the array of the rating promises
+            return $q.all(promiseArray) //promise all on the array of the rating promises  
                 .then((dates) => {
                     dates.forEach(date => {
                         let ratingArray = [];
-                        if (Object.keys(date).length > 0) { // if to filter out any objects returned without ratings
+                        if (Object.keys(date).length > 0) { //if to filter out any objects returned without ratings
                             let ratingKeys = Object.keys(date);
                             ratingKeys.forEach(ratingKey => {
                                 ratingArray.push(parseInt(date[ratingKey].rating));
                             });
-                            let ratingAverage = average(ratingArray); // averages each array of dates using the function below
+                            let ratingAverage = average(ratingArray); //averages each array of dates using the function below
                             dateLoop(ratingAverage, date, allDates); //loops through the averaged ratings and adds them as a key on to their date
                         }
                     });
