@@ -15,3 +15,13 @@ You will need to make the following install commands at the root of the project:
 npm install
 npm install node sass
 ```
+
+## Log-In
+
+
+## View Dates
+
+## View Single Date
+
+## Add Dates
+
