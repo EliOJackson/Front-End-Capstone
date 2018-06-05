@@ -1,1 +1,2 @@
-# Front-End-Capstone
+# Front End Capstone: Datr
+This is my front-end capstone for Nashville Software school. Datr is a CRUD Web Application designed to allow Users to view, save, and upload potential Dating locations in the city of Nashville.
