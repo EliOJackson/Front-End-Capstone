@@ -9,3 +9,9 @@ To Run Locally
 ```
 git clone: https://github.com/EliOJackson/Front-End-Capstone.git
 ```
+
+You will need to make the following install commands at the root of the project:
+```
+npm install
+npm install node sass
+```
