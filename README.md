@@ -16,5 +16,12 @@ npm install
 npm install node sass
 ```
 
+## Log-In
+
+
+## View Dates
+
+## View Single Date
+
 ## Add Dates
 
